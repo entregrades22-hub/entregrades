@@ -17,10 +17,10 @@ body {
 /* --- VARIÁVEIS DE COR MODERNIZADAS --- */
 :root {
     --verde-principal: #009245;
-    --amarelo-principal: #FFC700;
-    --azul-principal: #001D4A;
+    --amarelo-principal: #d7a800;
+    --azul-principal: #003079;
     --branco: #ffffff;
-    --cinza-escuro: #111111;
+    --cinza-escuro: #003e21;
     --cinza-claro: #f8f9fa;
     --cinza-texto: #343a40;
     --gradiente-amarelo: linear-gradient(45deg, #FFC700, #FFB800);
@@ -224,7 +224,7 @@ h2 {
 
 /* --- SEÇÃO MANIFESTO (VISUAL MELHORADO) --- */
 .manifesto-section {
-    background: linear-gradient(180deg, var(--cinza-escuro) 0%, #000 100%);
+    background: linear-gradient(180deg, var(--cinza-escuro) 0%, #00A852 100%);
     color: var(--branco);
     overflow: hidden;
     position: relative;
@@ -283,7 +283,7 @@ h2 {
 
 /* --- SEÇÃO DE APRESENTAÇÃO (SLIDER) --- */
 .presentation-section {
-    background-color: var(--cinza-claro);
+    background-color: var(--branco);
 }
 .slider-container {
     position: relative;
@@ -291,11 +291,11 @@ h2 {
     margin: auto;
     overflow: hidden;
     border-radius: 16px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 .slides {
     display: flex;
-    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: transform 0.5s ease-in-out;
 }
 .slide {
     min-width: 100%;
@@ -308,27 +308,18 @@ h2 {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(5px);
-    color: var(--azul-principal);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 29, 74, 0.7);
+    color: white;
+    border: none;
     cursor: pointer;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    font-weight: bold;
+    padding: 0.5rem 1rem;
+    font-size: 2.5rem;
     z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
 }
 .slider-btn:hover {
-    background-color: var(--branco);
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    background-color: rgba(0, 29, 74, 1);
 }
 .prev-btn {
     left: 15px;
@@ -783,4 +774,3 @@ h2 {
         padding: 3rem;
     }
 }
-
