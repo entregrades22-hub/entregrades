@@ -283,7 +283,7 @@ h2 {
 
 /* --- SEÇÃO DE APRESENTAÇÃO (SLIDER) --- */
 .presentation-section {
-    background-color: var(--branco);
+    background-color: var(--cinza-claro);
 }
 .slider-container {
     position: relative;
@@ -291,11 +291,11 @@ h2 {
     margin: auto;
     overflow: hidden;
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
 }
 .slides {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
 }
 .slide {
     min-width: 100%;
@@ -308,18 +308,27 @@ h2 {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 29, 74, 0.7);
-    color: white;
-    border: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    color: var(--azul-principal);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    padding: 0.5rem 1rem;
-    font-size: 2.5rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: bold;
     z-index: 10;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
 }
 .slider-btn:hover {
-    background-color: rgba(0, 29, 74, 1);
+    background-color: var(--branco);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 .prev-btn {
     left: 15px;
@@ -345,10 +354,27 @@ h2 {
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 .ebook-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 16px 35px rgba(0,0,0,0.1);
+}
+.best-seller-seal {
+    position: absolute;
+    top: 15px;
+    right: -35px;
+    background: var(--gradiente-amarelo);
+    color: var(--cinza-escuro);
+    padding: 5px 35px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    transform: rotate(45deg);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 2;
 }
 .ebook-cover {
     max-width: 100%;
@@ -640,6 +666,47 @@ h2 {
 .animated-section.visible .manifesto-item:nth-child(3) {
     transition-delay: 0.3s;
 }
+
+/* --- BOTÕES LATERAIS DE REDES SOCIAIS --- */
+.social-sidebar {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.social-sidebar a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: var(--azul-principal);
+    color: var(--branco);
+    text-decoration: none;
+    border-radius: 10px 0 0 10px;
+    box-shadow: -2px 2px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-sidebar a:hover {
+    transform: translateX(-10px);
+}
+
+.social-sidebar a.whatsapp:hover { background-color: #25D366; }
+.social-sidebar a.facebook:hover { background-color: #1877F2; }
+.social-sidebar a.instagram:hover { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
+
+.social-sidebar svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
 
 /* --- ESTILOS PARA TABLETS --- */
 @media (min-width: 768px) {
