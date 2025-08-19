@@ -188,7 +188,7 @@ h2 {
 
 /* --- SEÇÃO HERO --- */
 .hero-section {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/fundo.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/Documentário 3.png');
     background-size: cover;
     background-position: center;
     color: var(--branco);
@@ -783,3 +783,4 @@ h2 {
         padding: 3rem;
     }
 }
+
