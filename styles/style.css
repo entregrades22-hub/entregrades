@@ -224,7 +224,7 @@ h2 {
 
 /* --- SEÇÃO MANIFESTO (VISUAL MELHORADO) --- */
 .manifesto-section {
-    background: linear-gradient(180deg, var(--cinza-escuro) 0%, #00A852 100%);
+    background: linear-gradient(180deg, var(--cinza-escuro) 0%, #000 100%);
     color: var(--branco);
     overflow: hidden;
     position: relative;
@@ -774,3 +774,4 @@ h2 {
         padding: 3rem;
     }
 }
+
