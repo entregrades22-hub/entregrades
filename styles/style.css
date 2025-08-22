@@ -187,7 +187,7 @@ h2 {
 
 /* --- SEÇÃO HERO --- */
 .hero-section {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/fundo.png');
+    background-image: linear-gradient(rgba(38, 38, 38, 0.7), rgba(53, 53, 53, 0.7)), url('../images/Documentário 3.png');
     background-size: cover;
     background-position: center;
     color: var(--branco);
@@ -203,6 +203,7 @@ h2 {
     margin-right: auto;
 }
 .cta-button {
+    position: relative;
     background: var(--gradiente-amarelo);
     color: var(--cinza-escuro);
     padding: 18px 40px;
@@ -223,14 +224,14 @@ h2 {
 
 /* AUMENTA O TAMANHO DO BOTÃO PRINCIPAL */
 .hero-section .cta-button {
-    padding: 22px 50px;
-    font-size: 1.3rem;
+    padding: 22px 20px;
+    font-size: 90%;
 }
 
 
 /* --- SEÇÃO MANIFESTO (VISUAL MELHORADO) --- */
 .manifesto-section {
-    background: linear-gradient(180deg, var(--cinza-escuro) 0%, #000 100%);
+    background: linear-gradient(180deg, var(--cinza-escuro) 0%, #6c6c6c 100%);
     color: var(--branco);
     overflow: hidden;
     position: relative;
