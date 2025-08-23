@@ -106,8 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const ebooks = [
-        'E-book Essencial',
-        'E-book Premium',
+        'Documentário Essencial',
+        'Documentário Premium',
         'Combo Patriota Completo'
     ];
 
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(() => {
         showPopup();
-        setInterval(showPopup, 20000); // ALTERADO PARA 20 SEGUNDOS
+        setInterval(showPopup, 20000);
     }, 5000);
 
 });
