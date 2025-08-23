@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.classList.toggle('active');
     });
 
+    // Fecha o menu quando um link é clicado
     links.forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
@@ -22,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const countdownElement = document.getElementById('countdown-timer');
 
     if (countdownElement) {
+        // Define o tempo inicial do cronômetro (21 minutos em segundos)
         let timeInSeconds = 21 * 60;
 
         const timer = setInterval(() => {
@@ -43,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         }, 1000);
     }
-
 
     // --- LÓGICA DA GALERIA DE IMAGENS (SLIDER) ---
     const slidesContainer = document.querySelector('.slides');
@@ -129,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(() => {
         showPopup();
-        setInterval(showPopup, 8000);
+        setInterval(showPopup, 20000); // ALTERADO PARA 20 SEGUNDOS
     }, 5000);
 
 });
