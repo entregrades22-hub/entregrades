@@ -493,12 +493,18 @@ h2 {
 }
 .combo-card {
     background: var(--branco);
-    border: 3px solid var(--amarelo-principal);
+    border: 10px solid var(--amarelo-principal); /* Borda mais espessa */
     border-radius: 16px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
     overflow: hidden;
     text-align: left;
     position: relative;
+    /* Animação de pulso adicionada */
+    animation: pulse-glow 2.5s infinite ease-in-out;
+    transition: transform 0.3s ease;
+}
+.combo-card:hover {
+    transform: scale(1.02); /* Efeito de zoom sutil no hover */
 }
 .combo-image img {
     width: 100%;
@@ -570,6 +576,43 @@ h2 {
     padding: 20px 30px;
     margin-bottom: 1.5rem;
 }
+
+/* Hover aprimorado para o botão do combo */
+.combo-button:hover {
+    transform: translateY(-8px) scale(1.08);
+    box-shadow: 0 12px 30px rgba(255, 199, 0, 0.6);
+}
+
+/* Animação para o selo de mais vendido */
+.combo-card .best-seller-seal {
+    animation: shake-seal 4s infinite ease-in-out;
+    animation-delay: 1.5s;
+}
+
+/* Keyframes para a animação de pulso do card */
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 20px rgba(215, 168, 0, 0.3), 0 10px 40px rgba(0,0,0,0.1);
+        border-color: var(--amarelo-principal);
+    }
+    50% {
+        box-shadow: 0 0 35px rgba(215, 168, 0, 0.6), 0 10px 55px rgba(0,0,0,0.15);
+        border-color: #ffd900;
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(215, 168, 0, 0.3), 0 10px 40px rgba(0,0,0,0.1);
+        border-color: var(--amarelo-principal);
+    }
+}
+
+/* Keyframes para a animação de "chacoalhar" do selo */
+@keyframes shake-seal {
+    0%, 100% { transform: rotate(45deg) scale(1.0); }
+    5% { transform: rotate(50deg) scale(1.15); }
+    10% { transform: rotate(42deg) scale(1.15); }
+    15% { transform: rotate(45deg) scale(1.15); }
+}
+
 
 /* --- SEÇÃO DE DEPOIMENTOS --- */
 .testimonials-section { background-color: var(--branco); }
