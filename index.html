@@ -242,7 +242,7 @@
             line-height: 1.2;
         }
 
-        .video-container {
+        .video-wrapper {
             position: relative;
             margin-top: 2.5rem;
             max-width: 800px;
@@ -252,17 +252,11 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             border: 3px solid var(--amarelo-principal);
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
         }
-        
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+
+        .video-wrapper video {
             width: 100%;
-            height: 100%;
-            border: 0;
+            display: block;
         }
         
         #video-overlay {
@@ -1126,8 +1120,14 @@
                 <h1>A VERDADE SOBRE A PRISÃO DE BOLSONARO QUE A MÍDIA ESCONDEU</h1>
                 <p>Conhecimento e verdade para fortalecer a nação. Leia nossos documentários e faça parte da mudança.</p>
                 <a href="#combo" class="cta-button">VER CONTEÚDO PROIBIDO</a>
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/LSyFGV2SUVA?autoplay=1&mute=1&loop=1&playlist=LSyFGV2SUVA&controls=0&showinfo=0&rel=0&iv_load_policy=3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="video-wrapper">
+                    <video id="hero-video" autoplay loop muted playsinline>
+                        <source src="imagens/video.mp4" type="video/mp4">
+                        Seu navegador não suporta a tag de vídeo.
+                    </video>
+                    <div id="video-overlay">
+                        <button id="unmute-button">ATIVAR SOM</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1438,6 +1438,20 @@
             }, 1000);
         }
 
+        // --- LÓGICA DO VÍDEO ---
+        const video = document.getElementById('hero-video');
+        const overlay = document.getElementById('video-overlay');
+        const unmuteButton = document.getElementById('unmute-button');
+
+        if (video && overlay && unmuteButton) {
+            unmuteButton.addEventListener('click', () => {
+                video.muted = false;
+                video.currentTime = 0; // Reinicia o vídeo
+                video.play();
+                overlay.style.display = 'none';
+            });
+        }
+
         // --- LÓGICA DA GALERIA DE IMAGENS (SLIDER) ---
         const slidesContainer = document.querySelector('.slides');
         if (slidesContainer) {
@@ -1548,4 +1562,5 @@
     ></script>
 </body>
 </html>
+
 
