@@ -1,63 +1,136 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- LÓGICA DO CARROSSEL 3D ZOOM ---
-    const slides = document.querySelectorAll('.slide');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    
-    let currentIndex = 0;
 
-    function updateCarousel() {
-        // Remove todas as classes especiais primeiro
-        slides.forEach(slide => {
-            slide.classList.remove('active', 'prev', 'next');
-            slide.style.display = 'none'; // Esconde todos para evitar sobreposição errada
+    // --- LÓGICA DO MENU HAMBÚRGUER ---
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    const links = navLinks.querySelectorAll('a');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    });
+
+    // Fecha o menu quando um link é clicado
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
         });
+    });
 
-        // Índices circulares
-        const totalSlides = slides.length;
-        const prevIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        const nextIndex = (currentIndex + 1) % totalSlides;
 
-        // Configura o slide ATIVO (Centro - Zoom Grande)
-        slides[currentIndex].style.display = 'block';
-        slides[currentIndex].classList.add('active');
+    // --- LÓGICA DO CRONÔMETRO DE PROMOÇÃO ---
+    const countdownElement = document.getElementById('countdown-timer');
 
-        // Configura o slide ANTERIOR (Esquerda - Zoom Pequeno)
-        slides[prevIndex].style.display = 'block';
-        slides[prevIndex].classList.add('prev');
+    if (countdownElement) {
+        // Define o tempo inicial do cronômetro (21 minutos em segundos)
+        let timeInSeconds = 21 * 60;
 
-        // Configura o slide PRÓXIMO (Direita - Zoom Pequeno)
-        slides[nextIndex].style.display = 'block';
-        slides[nextIndex].classList.add('next');
+        const timer = setInterval(() => {
+            if (timeInSeconds <= 0) {
+                clearInterval(timer);
+                countdownElement.textContent = "00:00";
+                return;
+            }
+
+            timeInSeconds--;
+
+            const minutes = Math.floor(timeInSeconds / 60);
+            const seconds = timeInSeconds % 60;
+
+            const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+            const formattedSeconds = seconds < 10 ? '0' + seconds : seconds;
+
+            countdownElement.textContent = `${formattedMinutes}:${formattedSeconds}`;
+
+        }, 1000);
     }
 
-    nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateCarousel();
-    });
+    // --- LÓGICA DA GALERIA DE IMAGENS (SLIDER) ---
+    const slidesContainer = document.querySelector('.slides');
+    if (slidesContainer) {
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentIndex = 0;
 
-    prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        updateCarousel();
-    });
+        function updateSlider() {
+            slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
 
-    // Inicializa o carrossel
-    updateCarousel();
-
-    // --- LÓGICA DO FAQ (ACCORDION) ---
-    const accordions = document.querySelectorAll('.accordion-header');
-
-    accordions.forEach(acc => {
-        acc.addEventListener('click', function() {
-            const item = this.parentElement;
-            
-            // Fecha outros abertos (opcional, remova se quiser permitir múltiplos abertos)
-            document.querySelectorAll('.accordion-item').forEach(i => {
-                if(i !== item) i.classList.remove('active');
-            });
-
-            item.classList.toggle('active');
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateSlider();
         });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateSlider();
+        });
+
+        // Auto-play
+        setInterval(() => {
+            nextBtn.click();
+        }, 4000);
+    }
+
+
+    // --- LÓGICA DE ANIMAÇÃO AO ROLAR A PÁGINA ---
+    const animatedSections = document.querySelectorAll('.animated-section');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
     });
+    animatedSections.forEach(section => {
+        observer.observe(section);
+    });
+
+
+    // --- LÓGICA DO POP-UP DE COMPRAS ---
+    const popup = document.getElementById('purchase-popup');
+    const popupContent = popup.querySelector('.popup-content');
+
+    const buyers = [
+        { name: 'José C.', location: 'São Paulo/SP' },
+        { name: 'Maria S.', location: 'Rio de Janeiro/RJ' },
+        { name: 'Antônio P.', location: 'Porto Alegre/RS' },
+        { name: 'Fernanda L.', location: 'Goiânia/GO' },
+        { name: 'Lucas M.', location: 'Fortaleza/CE' },
+        { name: 'Beatriz R.', location: 'Manaus/AM' }
+    ];
+
+    const ebooks = [
+        'Documentário Essencial',
+        'Documentário Premium',
+        'Combo Patriota Completo'
+    ];
+
+    const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+    function showPopup() {
+        const randomBuyer = getRandomItem(buyers);
+        const randomEbook = getRandomItem(ebooks);
+
+        popupContent.innerHTML = `
+            <p><strong>${randomBuyer.name}</strong> de ${randomBuyer.location}</p>
+            <span>acabou de comprar <strong>${randomEbook}</strong></span>
+        `;
+        popup.classList.add('show');
+
+        setTimeout(() => {
+            popup.classList.remove('show');
+        }, 5000);
+    }
+
+    setTimeout(() => {
+        showPopup();
+        setInterval(showPopup, 20000);
+    }, 5000);
+
 });
