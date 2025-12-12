@@ -8,172 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-    <style>
-        /* --- RESET BÁSICO E CONFIGURAÇÕES GLOBAIS --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { font-family: 'Roboto', sans-serif; line-height: 1.6; background-color: #f4f6f8; color: #333; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-
-        /* --- VARIÁVEIS DE COR --- */
-        :root {
-            --verde-principal: #009245;
-            --verde-escuro: #006b28;
-            --amarelo-principal: #FFD700;
-            --azul-principal: #003079;
-            --branco: #ffffff;
-            --cinza-claro: #f8f9fa;
-            --vermelho-alerta: #dc3545;
-        }
-
-        /* --- UTILITÁRIOS --- */
-        section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; text-align: center; }
-        h1, h2, h3 { font-family: 'Oswald', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-        h1 { font-size: 2.2rem; text-shadow: 0 2px 5px rgba(0,0,0,0.2); line-height: 1.2; }
-        h2 { font-size: 2rem; margin-bottom: 30px; color: var(--azul-principal); }
-        .text-highlight { color: var(--verde-principal); }
-
-        /* --- HEADER & BARRA --- */
-        .promo-banner { background-color: var(--azul-principal); color: var(--branco); text-align: center; padding: 10px; font-weight: 700; font-size: 0.9rem; border-bottom: 4px solid var(--amarelo-principal); position: sticky; top: 0; z-index: 1000; }
-        #countdown-timer { background-color: var(--amarelo-principal); color: #000; padding: 2px 8px; border-radius: 4px; margin-left: 5px; }
-
-        /* --- NAV --- */
-        .header { background-color: #fff; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .logo { font-family: 'Oswald', sans-serif; font-size: 1.5rem; color: var(--azul-principal); text-decoration: none; font-weight: bold; }
-        
-        /* Menu Mobile Simples */
-        .nav-links { display: none; } 
-        @media (min-width: 768px) {
-            .nav-links { display: flex; gap: 20px; list-style: none; }
-            .nav-links a { text-decoration: none; color: #333; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; }
-            .nav-links a:hover { color: var(--verde-principal); }
-        }
-
-        /* --- HERO --- */
-        .hero-section { background: url('images/fundo.png') center/cover no-repeat; padding: 80px 20px; color: #fff; position: relative; }
-        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 48, 121, 0.85); z-index: 0; }
-        .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
-        .hero-content h1 { color: var(--amarelo-principal); text-shadow: 2px 2px 0px #000; margin-bottom: 20px; }
-        .hero-content p { font-size: 1.2rem; margin-bottom: 30px; color: #e0e0e0; }
-
-        /* VSL */
-        .video-wrapper { border: 4px solid var(--amarelo-principal); border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); background: #000; position: relative; aspect-ratio: 16/9; margin-bottom: 30px; }
-        .video-wrapper video { width: 100%; height: 100%; object-fit: cover; }
-        #video-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 2; }
-        #unmute-button { background: var(--verde-principal); color: #fff; border: none; padding: 15px 30px; font-size: 1.2rem; font-weight: bold; border-radius: 50px; cursor: pointer; animation: pulse 2s infinite; display: flex; align-items: center; gap: 10px; }
-
-        /* CTA BUTTON */
-        .cta-button { display: inline-block; background: linear-gradient(180deg, #ffdf00 0%, #d4af37 100%); color: #000; padding: 18px 40px; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: 1.2rem; text-transform: uppercase; box-shadow: 0 4px 0 #b8860b, 0 10px 20px rgba(0,0,0,0.2); transition: transform 0.2s; font-family: 'Oswald', sans-serif; width: 100%; max-width: 400px; }
-        .cta-button:hover { transform: translateY(-3px); filter: brightness(1.1); }
-        .cta-button:active { transform: translateY(2px); box-shadow: none; }
-
-        /* --- MANIFESTO / DORES --- */
-        .manifesto-section { background: #fff; }
-        .manifesto-grid { display: grid; gap: 20px; margin-top: 30px; }
-        @media (min-width: 768px) { .manifesto-grid { grid-template-columns: repeat(3, 1fr); } }
-        .manifesto-item { background: #f9f9f9; padding: 25px; border-radius: 10px; border: 1px solid #eee; transition: transform 0.3s; }
-        .manifesto-item:hover { transform: translateY(-5px); border-color: var(--verde-principal); }
-        .manifesto-item h3 { color: var(--azul-principal); font-size: 1.3rem; margin-bottom: 10px; }
-        .manifesto-item p { font-size: 0.95rem; color: #555; }
-
-        /* --- PREVIEW SLIDER --- */
-        .presentation-section { background-color: #f4f6f8; }
-        .slider-container { position: relative; max-width: 600px; margin: 0 auto; overflow: hidden; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .slides { display: flex; transition: transform 0.5s ease; }
-        .slide { min-width: 100%; }
-        .slide img { width: 100%; display: block; }
-        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: #fff; border: none; font-size: 2rem; cursor: pointer; padding: 10px; z-index: 10; }
-        .prev-btn { left: 10px; } .next-btn { right: 10px; }
-
-        /* --- BENEFÍCIOS --- */
-        .benefits-section { background: #fff; }
-        .benefits-grid { display: grid; gap: 15px; text-align: left; max-width: 800px; margin: 0 auto; }
-        @media (min-width: 768px) { .benefits-grid { grid-template-columns: 1fr 1fr; } }
-        .benefit-item { display: flex; align-items: flex-start; gap: 10px; padding: 15px; background: #f9f9f9; border-radius: 8px; }
-        .benefit-item h3 { margin: 0; font-size: 1rem; color: #333; }
-        
-        /* --- OFERTA (CARDs PROFISSIONAIS) --- */
-        .offer-section { background: linear-gradient(to bottom, #003079, #001f4d); color: #fff; padding-bottom: 80px; }
-        .offer-section h2 { color: var(--amarelo-principal); }
-        
-        .offer-grid { display: flex; flex-direction: column; gap: 30px; align-items: center; margin-top: 40px; }
-        @media (min-width: 768px) { .offer-grid { flex-direction: row; justify-content: center; align-items: stretch; } }
-
-        .card { background: #fff; color: #333; border-radius: 15px; width: 100%; max-width: 380px; overflow: hidden; position: relative; display: flex; flex-direction: column; }
-        
-        /* Card Básico */
-        .card.basic { border: 1px solid #ccc; opacity: 0.95; }
-        .card.basic .card-header { background: #e0e0e0; padding: 15px; color: #555; }
-        
-        /* Card Premium */
-        .card.premium { border: 4px solid var(--amarelo-principal); transform: scale(1.02); box-shadow: 0 0 30px rgba(255, 215, 0, 0.3); z-index: 10; }
-        .best-seller { position: absolute; top: 0; left: 0; width: 100%; background: var(--amarelo-principal); color: #000; font-weight: 800; padding: 5px; font-size: 0.8rem; text-transform: uppercase; }
-        .card.premium .card-header { background: #003079; color: #fff; padding: 30px 15px 15px; } /* Mais padding top por causa da faixa */
-
-        .card-img { padding: 20px; background: #fff; text-align: center; }
-        .card-img img { max-width: 150px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-
-        .price-area { padding: 10px; text-align: center; }
-        .old-price { text-decoration: line-through; color: #999; font-size: 0.9rem; }
-        .current-price { font-size: 2.5rem; font-weight: 800; color: #333; line-height: 1; }
-        .installments { font-size: 0.9rem; color: #666; margin-top: 5px; }
-        
-        .card.premium .current-price { color: var(--verde-principal); }
-
-        .features { padding: 20px; text-align: left; flex-grow: 1; }
-        .features ul { list-style: none; padding: 0; }
-        .features li { margin-bottom: 10px; font-size: 0.95rem; border-bottom: 1px solid #eee; padding-bottom: 5px; display: flex; gap: 8px; }
-        .features i { margin-top: 4px; }
-        .check { color: var(--verde-principal); }
-        .cross { color: var(--vermelho-alerta); }
-        .bold-red { color: var(--vermelho-alerta); font-weight: 700; }
-
-        .premium-features { background: #f0fdf4; border: 1px solid #bbf7d0; padding: 10px; border-radius: 8px; margin-top: 10px; }
-        .premium-features p { font-weight: 800; font-size: 0.9rem; color: var(--verde-escuro); margin-bottom: 5px; }
-
-        .btn-buy { display: block; padding: 15px; text-align: center; font-weight: 800; text-decoration: none; text-transform: uppercase; border-radius: 0 0 15px 15px; margin-top: auto; font-family: 'Oswald', sans-serif; font-size: 1.2rem; }
-        .btn-basic { background: #ccc; color: #333; }
-        .btn-premium { background: var(--verde-principal); color: #fff; box-shadow: 0 -4px 20px rgba(0, 146, 69, 0.4); animation: pulse 2s infinite; }
-
-        /* --- GARANTIA (Clean) --- */
-        .guarantee-section { background: #fff; padding: 80px 20px; }
-        .seal { width: 120px; margin: 0 auto 20px; }
-        .guarantee-content { max-width: 700px; margin: 0 auto; }
-        .guarantee-content h3 { color: var(--verde-escuro); font-size: 1.8rem; margin-bottom: 15px; }
-
-        /* --- DEPOIMENTOS (Swiper) --- */
-        .testimonials-section { background: #f9f9f9; }
-        .swiper { width: 100%; padding-top: 20px; padding-bottom: 50px; }
-        .swiper-slide { background-position: center; background-size: cover; width: 300px; height: auto; }
-        .swiper-slide img { display: block; width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-
-        /* --- FAQ --- */
-        .faq-section { background: #fff; }
-        .faq-item { border-bottom: 1px solid #eee; text-align: left; max-width: 800px; margin: 0 auto; }
-        .faq-question { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: 0.3s; padding: 0 20px; color: #555; }
-        .faq-item.active .faq-answer { padding-bottom: 20px; max-height: 200px; }
-        .faq-item.active .faq-question { color: var(--verde-principal); }
-
-        /* --- FOOTER --- */
-        footer { background: #222; color: #aaa; padding: 40px 20px; font-size: 0.9rem; }
-        footer a { color: #fff; text-decoration: none; }
-
-        /* --- UTILS --- */
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 9999; }
-        
-        .purchase-popup { position: fixed; bottom: 20px; left: 20px; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); z-index: 9998; border-left: 5px solid var(--verde-principal); display: none; max-width: 300px; text-align: left; font-size: 0.85rem; }
-        .purchase-popup.show { display: block; animation: slideIn 0.5s ease; }
-        @keyframes slideIn { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
-        @media (max-width: 480px) {
-            h1 { font-size: 1.8rem; }
-            .offer-grid { gap: 40px; }
-        }
-    </style>
+    
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
 
@@ -201,6 +41,7 @@
             <div class="video-wrapper">
                 <video id="hero-video" poster="images/fundo.png" loop playsinline>
                     <source src="images/video.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos.
                 </video>
                 <div id="video-overlay">
                     <button id="unmute-button"><i class="fas fa-volume-up"></i> ATIVAR SOM AGORA</button>
@@ -215,30 +56,85 @@
         <h2>VOCÊ SENTE QUE TENTAM TE CALAR?</h2>
         <div class="manifesto-grid">
             <div class="manifesto-item">
+                <i class="fas fa-gavel"></i>
                 <h3>A INJUSTIÇA</h3>
                 <p>Perseguição política implacável contra o líder da direita e processos questionáveis.</p>
             </div>
             <div class="manifesto-item">
+                <i class="fas fa-ban"></i>
                 <h3>A CENSURA</h3>
                 <p>Redes sociais bloqueadas e perfis derrubados apenas por expressar opinião.</p>
             </div>
             <div class="manifesto-item">
+                <i class="fas fa-bullhorn"></i>
                 <h3>A NARRATIVA</h3>
-                <p>A mídia impõe uma única verdade. Nós mostramos o outro lado.</p>
+                <p>A mídia impõe uma única verdade. Nós mostramos o outro lado da moeda.</p>
             </div>
         </div>
+        <p class="manifesto-bottom-text">Eles querem nos calar, mas o conhecimento é a nossa arma. É hora de entender o jogo, fortalecer nossos argumentos e lutar pela verdade.</p>
     </section>
 
     <section class="presentation-section">
         <h2>UMA AMOSTRA DO QUE VOCÊ VAI RECEBER</h2>
         <div class="slider-container">
             <div class="slides">
-                <div class="slide"><img src="images/apresentação 1.png"></div>
-                <div class="slide"><img src="images/apresentação 2.png"></div>
-                <div class="slide"><img src="images/apresentação 3.png"></div>
+                <div class="slide"><img src="images/apresentação 1.png" alt="Página 1"></div>
+                <div class="slide"><img src="images/apresentação 2.png" alt="Página 2"></div>
+                <div class="slide"><img src="images/apresentação 3.png" alt="Página 3"></div>
+                <div class="slide"><img src="images/apresentação 4.png" alt="Página 4"></div>
             </div>
             <button class="slider-btn prev-btn">‹</button>
             <button class="slider-btn next-btn">›</button>
+        </div>
+    </section>
+
+    <section class="benefits-section">
+        <div class="container">
+            <h2>POR MENOS QUE UMA IDA AO MERCADO, VEJA O QUE VOCÊ VAI GANHAR:</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">✅</div>
+                    <div class="benefit-text">
+                        <h3>Conhecimento real e argumentos poderosos</h3>
+                        <p>Tenha acesso a fatos, datas e provas concretas para vencer qualquer discussão com confiança.</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">✅</div>
+                    <div class="benefit-text">
+                        <h3>Verdades que querem esconder</h3>
+                        <p>Descubra o que tentam apagar da memória nacional, revelado de forma clara e objetiva.</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">✅</div>
+                    <div class="benefit-text">
+                        <h3>Autoridade nas conversas</h3>
+                        <p>Chega de ficar sem resposta! Tenha informação para rebater qualquer mentira com tranquilidade.</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">✅</div>
+                    <div class="benefit-text">
+                        <h3>Opções para aprender do seu jeito</h3>
+                        <p>Versão Premium com conteúdo aprofundado e um pacote completo para quem quer dominar todos os detalhes.</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">✅</div>
+                    <div class="benefit-text">
+                        <h3>Entrega imediata e garantia</h3>
+                        <p>Acesso instantâneo após a compra e 7 dias para solicitar reembolso, sem burocracia.</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">✅</div>
+                    <div class="benefit-text">
+                        <h3>Apoio à liberdade e à justiça</h3>
+                        <p>Ao adquirir, você se junta a uma causa maior: defender a verdade e a liberdade no Brasil.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -253,7 +149,7 @@
                     <small>Ideal para iniciantes</small>
                 </div>
                 <div class="card-img">
-                    <img src="images/Documentário 1.png" alt="Básico">
+                    <img src="images/Documentário 1.png" alt="Capa Básico">
                 </div>
                 <div class="price-area">
                     <span class="old-price">R$ 39,90</span>
@@ -280,7 +176,7 @@
                     <small>A Verdade Nua e Crua</small>
                 </div>
                 <div class="card-img">
-                    <img src="images/Documentário 2.png" alt="Premium">
+                    <img src="images/Documentário 2.png" alt="Capa Premium">
                 </div>
                 <div class="price-area">
                     <span class="old-price">R$ 97,00</span>
@@ -312,22 +208,30 @@
         <h2>QUEM LEU, ABRIU OS OLHOS</h2>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="images/whats 1.jpg"></div>
-                <div class="swiper-slide"><img src="images/whats 2.jpg"></div>
-                <div class="swiper-slide"><img src="images/whats 3.jpg"></div>
-                <div class="swiper-slide"><img src="images/whats 4.jpg"></div>
+                <div class="swiper-slide"><img src="images/whats 1.jpg" alt="Depoimento 1"></div>
+                <div class="swiper-slide"><img src="images/whats 2.jpg" alt="Depoimento 2"></div>
+                <div class="swiper-slide"><img src="images/whats 3.jpg" alt="Depoimento 3"></div>
+                <div class="swiper-slide"><img src="images/whats 4.jpg" alt="Depoimento 4"></div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
     </section>
 
-    <section class="guarantee-section">
-        <div class="seal">
-            <img src="https://cdn-icons-png.flaticon.com/512/266/266099.png" alt="Selo 7 dias" width="100%">
-        </div>
-        <div class="guarantee-content">
-            <h3>GARANTIA INCONDICIONAL DE 7 DIAS</h3>
-            <p>O risco é todo nosso. Você tem 7 dias para ler o material. Se não ficar satisfeito com as revelações, devolvemos 100% do seu dinheiro via PIX. Sem perguntas.</p>
+    <section class="guarantee-section-dark">
+        <div class="guarantee-card-dark">
+            <div class="guarantee-icon"><i class="fas fa-shield-alt"></i></div>
+            <h2>GARANTIA "RISCO ZERO" — 7 DIAS</h2>
+            <h3>VOCÊ SÓ PAGA SE ABRIR SEUS OLHOS.</h3>
+            <p>Você baixa o material agora, lê tudo hoje. Se achar que não valeu a pena, se não sentir a revolta e a verdade voltando, eu devolvo 100% do seu dinheiro.</p>
+            <p class="guarantee-small">Sem formulário. Sem pergunta. Sem burocracia.</p>
+            
+            <ul class="guarantee-check">
+                <li><i class="fas fa-check"></i> Baixou o dossiê?</li>
+                <li><i class="fas fa-check"></i> Não gostou?</li>
+                <li><i class="fas fa-check"></i> Eu devolvo seu dinheiro</li>
+            </ul>
+
+            <a href="#oferta" class="btn-guarantee-gold">QUERO TESTAR SEM RISCO</a>
         </div>
     </section>
 
@@ -345,12 +249,20 @@
             <div class="faq-question">Quais as formas de pagamento? <i class="fas fa-chevron-down"></i></div>
             <div class="faq-answer">PIX (imediato), Cartão de Crédito e Boleto.</div>
         </div>
+        <div class="faq-item">
+            <div class="faq-question">Terei acesso a atualizações? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Sim! No pacote Premium, você recebe todas as atualizações futuras gratuitamente.</div>
+        </div>
     </section>
 
     <footer>
         <p>Brasil Acima de Tudo © 2025</p>
         <p><a href="#">Termos de Uso</a> | <a href="#">Privacidade</a></p>
         <p>Contato: entregrades22@gmail.com</p>
+        <div class="social-links" style="justify-content: center; display: flex; gap: 15px; margin-top: 20px;">
+             <a href="https://www.facebook.com/share/1HzSvLUAgn/" target="_blank" style="color: white; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+             <a href="http://www.instagram.com/entregrades22/" target="_blank" style="color: white; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+        </div>
     </footer>
 
     <div id="purchase-popup" class="purchase-popup">
@@ -362,64 +274,7 @@
     </a>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // VÍDEO
-            const video = document.getElementById('hero-video');
-            const overlay = document.getElementById('video-overlay');
-            if (video && overlay) {
-                document.getElementById('unmute-button').addEventListener('click', () => {
-                    video.muted = false; video.currentTime = 0; video.play();
-                    overlay.style.display = 'none'; video.controls = true;
-                });
-            }
-
-            // SLIDER ANTIGO (PREVIEW)
-            const slides = document.querySelectorAll('.slide');
-            const next = document.querySelector('.next-btn');
-            const prev = document.querySelector('.prev-btn');
-            let idx = 0;
-            if(slides.length > 0) {
-                const updateSlide = () => document.querySelector('.slides').style.transform = `translateX(-${idx * 100}%)`;
-                next.addEventListener('click', () => { idx = (idx + 1) % slides.length; updateSlide(); });
-                prev.addEventListener('click', () => { idx = (idx - 1 + slides.length) % slides.length; updateSlide(); });
-            }
-
-            // SWIPER DEPOIMENTOS
-            new Swiper(".mySwiper", {
-                effect: "coverflow", grabCursor: true, centeredSlides: true, slidesPerView: "auto",
-                coverflowEffect: { rotate: 0, stretch: 0, depth: 100, modifier: 2, slideShadows: false },
-                loop: true, pagination: { el: ".swiper-pagination", clickable: true }
-            });
-
-            // FAQ
-            document.querySelectorAll('.faq-question').forEach(q => {
-                q.addEventListener('click', () => {
-                    q.parentElement.classList.toggle('active');
-                });
-            });
-
-            // TIMER
-            let time = 900;
-            setInterval(() => {
-                if(time <= 0) return;
-                time--;
-                let m = Math.floor(time / 60);
-                let s = time % 60;
-                document.getElementById('countdown-timer').innerText = `${m < 10 ? '0'+m : m}:${s < 10 ? '0'+s : s}`;
-            }, 1000);
-
-            // POPUP
-            const names = ["João de SP", "Maria de RJ", "Carlos de MG", "Ana de RS"];
-            const popup = document.getElementById('purchase-popup');
-            const showPopup = () => {
-                popup.innerHTML = `<p><strong>${names[Math.floor(Math.random()*names.length)]}</strong> comprou <strong>Combo Premium</strong></p>`;
-                popup.classList.add('show');
-                setTimeout(() => popup.classList.remove('show'), 4000);
-            };
-            setTimeout(() => { showPopup(); setInterval(showPopup, 15000); }, 5000);
-        });
-    </script>
+    <script src="js/script.js"></script>
     <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" async defer></script>
 </body>
 </html>
