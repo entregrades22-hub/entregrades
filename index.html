@@ -6,9 +6,8 @@
     <title>Brasil Acima de Tudo - A Verdade Revelada</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
@@ -31,7 +30,7 @@
                         Seu navegador não suporta vídeos.
                     </video>
                     <div id="video-overlay">
-                        <button id="unmute-button"><i class="fas fa-volume-up"></i> LIBERAR ÁUDIO SIGILOSO</button>
+                        <button id="unmute-button"><i class="fas fa-play"></i> LIBERAR ÁUDIO SIGILOSO</button>
                     </div>
                 </div>
             </div>
@@ -67,15 +66,17 @@
     <section id="depoimentos" class="testimonials-section animated-section">
         <div class="container">
             <h2>QUEM LEU, ABRIU OS OLHOS</h2>
-            <div class="slider-container">
-                <div class="slides">
-                    <div class="slide"><img src="images/whats 1.jpg" alt="Depoimento 1"></div>
-                    <div class="slide"><img src="images/whats 2.jpg" alt="Depoimento 2"></div>
-                    <div class="slide"><img src="images/whats 3.jpg" alt="Depoimento 3"></div>
-                    <div class="slide"><img src="images/whats 4.jpg" alt="Depoimento 4"></div>
+            <div class="carousel-container" id="testimonials-carousel">
+                <button class="carousel-btn prev-btn" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-track-container">
+                    <ul class="carousel-track">
+                        <li class="carousel-slide current-slide"><img src="images/whats 1.jpg" alt="Depoimento 1"></li>
+                        <li class="carousel-slide"><img src="images/whats 2.jpg" alt="Depoimento 2"></li>
+                        <li class="carousel-slide"><img src="images/whats 3.jpg" alt="Depoimento 3"></li>
+                        <li class="carousel-slide"><img src="images/whats 4.jpg" alt="Depoimento 4"></li>
+                    </ul>
                 </div>
-                <button class="slider-btn prev-btn">‹</button>
-                <button class="slider-btn next-btn">›</button>
+                <button class="carousel-btn next-btn" aria-label="Próximo"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
@@ -84,10 +85,17 @@
         <div class="container">
             <h2>DENTRO DAS "GRADES INVISÍVEIS"</h2>
             <p>Veja uma amostra dos documentos e análises que você terá em mãos.</p>
-            <div class="preview-grid">
-                <img src="images/apresentação 1.png" alt="Página do Ebook">
-                <img src="images/apresentação 2.png" alt="Página do Ebook">
-                <img src="images/apresentação 3.png" alt="Página do Ebook">
+            <div class="carousel-container" id="preview-carousel">
+                <button class="carousel-btn prev-btn" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-track-container">
+                    <ul class="carousel-track">
+                        <li class="carousel-slide current-slide"><img src="images/apresentação 1.png" alt="Página do Ebook"></li>
+                        <li class="carousel-slide"><img src="images/apresentação 2.png" alt="Página do Ebook"></li>
+                        <li class="carousel-slide"><img src="images/apresentação 3.png" alt="Página do Ebook"></li>
+                        <li class="carousel-slide"><img src="images/apresentação 4.png" alt="Página do Ebook"></li>
+                    </ul>
+                </div>
+                <button class="carousel-btn next-btn" aria-label="Próximo"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
@@ -132,24 +140,15 @@
                     <div class="payment-methods">
                         <i class="fab fa-pix"></i> <i class="fas fa-barcode"></i> <i class="far fa-credit-card"></i>
                     </div>
+                    <p class="guarantee-text"><i class="fas fa-shield-alt"></i> Garantia Incondicional de 7 Dias</p>
                 </div>
             </div>
 
-            <div class="warning-box">
-                <i class="fas fa-exclamation-triangle"></i>
-                <div class="warning-text">
-                    <strong>ATENÇÃO: PRODUTO 100% DIGITAL</strong>
-                    <p>Você NÃO receberá livro físico pelo correio. O acesso ao PDF é enviado imediatamente para seu E-mail após o pagamento.</p>
-                </div>
+            <div class="digital-notice">
+                <i class="fas fa-info-circle"></i>
+                <p>Produto 100% digital. Acesso imediato por e-mail após a compra.</p>
             </div>
 
-            <div class="guarantee-badge">
-                <img src="https://cdn-icons-png.flaticon.com/512/266/266099.png" alt="Selo Garantia" width="60">
-                <div>
-                    <h4>Garantia de 7 Dias</h4>
-                    <p>Se não gostar da verdade, devolvemos seu dinheiro via PIX.</p>
-                </div>
-            </div>
         </div>
     </section>
 
