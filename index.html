@@ -2,80 +2,50 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brasil Acima de Tudo - A Verdade Revelada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Brasil Acima de Tudo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
 
-    <div class="promo-banner">
-        <span><i class="fas fa-exclamation-circle"></i> O SISTEMA TENTA DERRUBAR ESTE SITE. PROMOÇÃO ACABA EM: <span id="countdown-timer">14:59</span></span>
+    <div class="top-warning">
+        <i class="fas fa-shield-alt"></i> TEMPO ESGOTADO! ESSA É SUA ÚLTIMA CHANCE
     </div>
 
-    <header class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <h1>A VERDADE SOBRE A PRISÃO DE BOLSONARO QUE A MÍDIA ESCONDEU</h1>
-            <p class="subheadline">Documentos vazados, provas irrefutáveis e a análise que eles não querem que você veja.</p>
+    <header class="header">
+        <div class="container">
+            <h1>A VERDADE QUE A MÍDIA TENTOU ESCONDER DE VOCÊ</h1>
+            <p class="headline-desc">Assista ao vídeo antes que o sistema derrube esta página.</p>
             
-            <div class="video-wrapper">
-                <div class="video-container">
-                    <video id="hero-video" poster="images/fundo.png" playsinline loop>
-                        <source src="images/video.mp4" type="video/mp4">
-                        Seu navegador não suporta vídeos.
-                    </video>
-                    <div id="video-overlay">
-                        <div class="play-button-circle">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <p>CLIQUE PARA ASSISTIR À VERDADE</p>
-                    </div>
+            <div class="video-box">
+                <video id="vsl-video" poster="images/fundo.png" playsinline loop>
+                    <source src="images/video.mp4" type="video/mp4">
+                </video>
+                <div class="video-overlay" id="video-overlay">
+                    <div class="play-btn-pulse"><i class="fas fa-play"></i></div>
+                    <span>CLIQUE PARA LIBERAR O ÁUDIO</span>
                 </div>
             </div>
 
-            <a href="#oferta" class="cta-button pulse">QUERO ACESSAR O DOSSIÊ AGORA</a>
+            <a href="#oferta" class="cta-btn pulse">QUERO A VERDADE AGORA</a>
         </div>
     </header>
 
-    <section class="pain-points">
-        <div class="container">
-            <h2>VOCÊ SENTE QUE SUA VOZ FOI SILENCIADA?</h2>
-            <div class="cards-grid">
-                <div class="card-pain">
-                    <i class="fas fa-gavel"></i>
-                    <h3>A INJUSTIÇA</h3>
-                    <p>Processos questionáveis e perseguição implacável contra o líder da direita.</p>
-                </div>
-                <div class="card-pain">
-                    <i class="fas fa-ban"></i>
-                    <h3>A CENSURA</h3>
-                    <p>Sua opinião virou crime. Redes sociais bloqueadas e perfis derrubados.</p>
-                </div>
-                <div class="card-pain">
-                    <i class="fas fa-tv"></i>
-                    <h3>A NARRATIVA</h3>
-                    <p>A mídia mente. Nós trazemos os documentos que desmentem o Jornal Nacional.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="depoimentos" class="testimonials-section">
+    <section class="proof-section">
         <div class="container">
             <h2>QUEM LEU, ABRIU OS OLHOS</h2>
-            <div class="carousel-wrapper">
-                <button class="carousel-nav prev"><i class="fas fa-chevron-left"></i></button>
-                <div class="carousel-images" id="testimonial-slider">
-                    <img src="images/whats 1.jpg" class="active" alt="Depoimento 1">
-                    <img src="images/whats 2.jpg" alt="Depoimento 2">
-                    <img src="images/whats 3.jpg" alt="Depoimento 3">
-                    <img src="images/whats 4.jpg" alt="Depoimento 4">
+            <div class="scroll-wrapper">
+                <div class="scroll-content">
+                    <img src="images/whats 1.jpg" alt="Prova 1">
+                    <img src="images/whats 2.jpg" alt="Prova 2">
+                    <img src="images/whats 3.jpg" alt="Prova 3">
+                    <img src="images/whats 4.jpg" alt="Prova 4">
                 </div>
-                <button class="carousel-nav next"><i class="fas fa-chevron-right"></i></button>
+                <p class="swipe-hint"><i class="fas fa-hand-point-up"></i> Arraste para o lado</p>
             </div>
         </div>
     </section>
@@ -83,152 +53,113 @@
     <section class="preview-section">
         <div class="container">
             <h2>DENTRO DAS "GRADES INVISÍVEIS"</h2>
-            <p>Uma amostra do material explosivo que você terá em mãos.</p>
-            <div class="carousel-wrapper">
-                <button class="carousel-nav prev-prev"><i class="fas fa-chevron-left"></i></button>
-                <div class="carousel-images" id="preview-slider">
-                    <img src="images/apresentação 1.png" class="active" alt="Página 1">
-                    <img src="images/apresentação 2.png" alt="Página 2">
-                    <img src="images/apresentação 3.png" alt="Página 3">
-                    <img src="images/apresentação 4.png" alt="Página 4">
+            <p>O que você vai encontrar nos arquivos vazados:</p>
+            <div class="scroll-wrapper">
+                <div class="scroll-content ebook-pages">
+                    <img src="images/apresentação 1.png" alt="Pág 1">
+                    <img src="images/apresentação 2.png" alt="Pág 2">
+                    <img src="images/apresentação 3.png" alt="Pág 3">
                 </div>
-                <button class="carousel-nav next-prev"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
 
     <section id="oferta" class="offer-section">
         <div class="container">
-            <div class="offer-header">
-                <h2>ESCOLHA SEU PACOTE DE LIBERTAÇÃO</h2>
-            </div>
             
-            <div class="pricing-container">
+            <div class="offer-card">
+                <div class="offer-tag">🔥 OFERTA RELÂMPAGO</div>
                 
-                <div class="pricing-card basic">
-                    <h3>DOCUMENTÁRIO BÁSICO</h3>
-                    <div class="card-image">
-                        <img src="images/Documentário 1.png" alt="Capa Básico">
-                    </div>
-                    <div class="price-block">
-                        <span class="old-price">R$ 39,90</span>
-                        <span class="new-price">R$ 17,00</span>
-                    </div>
-                    <ul class="benefits-list">
-                        <li><i class="fas fa-check"></i> 5 Capítulos Resumidos</li>
-                        <li><i class="fas fa-check"></i> Leitura Rápida</li>
-                        <li class="muted"><i class="fas fa-times"></i> Sem documentos vazados</li>
-                        <li class="muted"><i class="fas fa-times"></i> Sem grupo VIP</li>
-                    </ul>
-                    <a href="https://pay.kirvano.com/e9bfa0a4-2a23-4f16-a806-ddf2f5dd9281" class="btn-offer basic-btn">QUERO O BÁSICO</a>
+                <div class="product-header">
+                    <img src="images/Documentário 2.png" alt="Capa Premium" class="product-img">
+                    <h3>DOSSIÊ COMPLETO</h3>
+                    <p>Pack Digital + Bônus Secretos</p>
                 </div>
 
-                <div class="pricing-card premium">
-                    <div class="best-seller-tag">MAIS VENDIDO 🔥</div>
-                    <h3>COMBO PREMIUM COMPLETO</h3>
-                    <p class="subtitle">Acesso Vitalício + Bônus Exclusivos</p>
-                    
-                    <div class="card-image">
-                        <img src="images/Documentário 2.png" alt="Capa Premium">
+                <div class="price-details">
+                    <div class="price-row">
+                        <span>Dossiê Completo</span>
+                        <span class="scratched">R$ 97,00</span>
                     </div>
-
-                    <div class="price-block">
-                        <span class="old-price">R$ 97,00</span>
-                        <span class="new-price highlight">R$ 22,00</span>
-                        <p class="installments">ou à vista no PIX</p>
+                    <div class="price-row highlight">
+                        <span><i class="fas fa-star"></i> Grupo VIP</span>
+                        <span class="free">GRÁTIS</span>
                     </div>
-
-                    <ul class="benefits-list">
-                        <li><i class="fas fa-check"></i> <strong>25+ Páginas de Investigação</strong></li>
-                        <li><i class="fas fa-check"></i> <strong>Documentos "Vazados"</strong></li>
-                        <li><i class="fas fa-check"></i> Análise Futuro Político</li>
-                        <li class="bonus"><i class="fas fa-star"></i> <strong>BÔNUS:</strong> Grupo Secreto WhatsApp</li>
-                    </ul>
-
-                    <a href="https://pay.kirvano.com/7f694891-cee9-4641-8374-a06e448801a5" class="btn-offer premium-btn">QUERO A VERDADE COMPLETA</a>
-                    
-                    <div class="security-badges">
-                        <span><i class="fas fa-lock"></i> Compra Segura</span>
-                        <span><i class="fas fa-bolt"></i> Acesso Imediato (PDF)</span>
+                    <div class="price-row">
+                        <span>Acesso Vitalício</span>
+                        <span>R$ 29,90</span>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="total-row">
+                        <span>VALOR TOTAL REAL:</span>
+                        <span class="total-scratched">R$ 126,90</span>
                     </div>
                 </div>
 
+                <div class="big-price">
+                    <small>Por apenas</small>
+                    <div class="price-display">
+                        <span class="currency">R$</span>
+                        <span class="amount">22,00</span>
+                    </div>
+                    <p class="sub-price">SEM JUROS • ACESSO IMEDIATO • SEGURO</p>
+                </div>
+
+                <a href="https://pay.kirvano.com/7f694891-cee9-4641-8374-a06e448801a5" class="cta-btn-offer">QUERO A VERDADE</a>
+
+                <div class="security-icons">
+                    <span><i class="fas fa-shield-alt"></i> COMPRA SEGURA</span>
+                    <span><i class="fas fa-bolt"></i> ENTREGA FLASH (PDF)</span>
+                </div>
             </div>
+
+            <div class="basic-option">
+                <p>Ou leve apenas o resumo básico por R$ 17,00</p>
+                <a href="https://pay.kirvano.com/e9bfa0a4-2a23-4f16-a806-ddf2f5dd9281">Clique aqui para o Básico</a>
+            </div>
+
         </div>
     </section>
 
     <section class="guarantee-section">
         <div class="container">
             <div class="guarantee-card">
-                <div class="guarantee-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h2>GARANTIA "RISCO ZERO" — 7 DIAS</h2>
-                <h3>VOCÊ SÓ PAGA SE ABRIR SEUS OLHOS.</h3>
-                <p>Você baixa o material agora, lê tudo hoje. Se achar que não valeu a pena, se não sentir a revolta e a verdade voltando, eu devolvo 100% do seu dinheiro.</p>
-                <p class="no-bureaucracy">Sem formulário. Sem pergunta. Sem burocracia.</p>
+                <div class="icon-shield"><i class="fas fa-shield-alt"></i></div>
+                <h3>Garantia "Risco Zero" — 7 Dias</h3>
+                <h4>VOCÊ SÓ PAGA SE FUNCIONAR.</h4>
+                <p>Você baixa agora, lê tudo hoje. Se não sentir a revolta, se não abrir seus olhos, eu devolvo 100% do seu dinheiro.</p>
+                <p class="small-text">Sem formulário. Sem pergunta. Sem burocracia.</p>
                 
-                <ul class="guarantee-list">
-                    <li><i class="fas fa-check"></i> Leu o dossiê?</li>
+                <ul class="check-list">
+                    <li><i class="fas fa-check"></i> Baixou o arquivo</li>
                     <li><i class="fas fa-check"></i> Não gostou?</li>
-                    <li><i class="fas fa-check"></i> Eu assumo o risco sozinho.</li>
+                    <li><i class="fas fa-check"></i> Eu assumo o risco</li>
                 </ul>
 
-                <a href="#oferta" class="btn-guarantee">QUERO TESTAR SEM RISCO</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="faq" class="faq-section">
-        <div class="container">
-            <h2>DÚVIDAS FREQUENTES</h2>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-header">
-                        <h4>É seguro comprar?</h4>
-                        <i class="fas fa-plus"></i>
-                    </div>
-                    <div class="faq-body"><p>Sim. Utilizamos a Kirvano, plataforma com segurança bancária.</p></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-header">
-                        <h4>Recebo em casa?</h4>
-                        <i class="fas fa-plus"></i>
-                    </div>
-                    <div class="faq-body"><p>Não. O acesso é 100% Digital (PDF). Você recebe no e-mail na hora e não paga frete.</p></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-header">
-                        <h4>Como acesso os bônus?</h4>
-                        <i class="fas fa-plus"></i>
-                    </div>
-                    <div class="faq-body"><p>O link do Grupo VIP e os arquivos extras vão no mesmo e-mail de confirmação.</p></div>
-                </div>
+                <a href="#oferta" class="btn-gold">QUERO TESTAR SEM RISCO</a>
             </div>
         </div>
     </section>
 
     <footer class="footer">
-        <div class="container">
-            <p>Brasil Acima de Tudo © 2025</p>
-            <div class="legal-links">
-                <a href="#">Termos de Uso</a>
-                <a href="#">Política de Privacidade</a>
-            </div>
-            <p class="contact">Contato: entregrades22@gmail.com</p>
+        <p>Brasil Acima de Tudo © 2025</p>
+        <p class="disclaimer">Este site não tem vínculo com o governo.</p>
+        <div class="links">
+            <a href="#">Termos</a> • <a href="#">Privacidade</a>
         </div>
+        <p>Contato: entregrades22@gmail.com</p>
     </footer>
 
-    <div id="purchase-popup" class="purchase-popup">
-        <div class="popup-icon"><i class="fas fa-check"></i></div>
-        <div class="popup-content"></div>
+    <div id="toast" class="toast hide">
+        <div class="toast-icon"><i class="fas fa-check-circle"></i></div>
+        <div class="toast-body">
+            <strong>Nova Compra Aprovada</strong>
+            <span id="buyer-name">Ricardo de SP comprou...</span>
+        </div>
     </div>
 
-    <a href="https://wa.me/message/O52M473XMG4JI1" target="_blank" class="whatsapp-float">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/message/O52M473XMG4JI1" class="whats-btn"><i class="fab fa-whatsapp"></i></a>
 
     <script src="js/script.js"></script>
-    <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" async defer></script>
 </body>
 </html>
