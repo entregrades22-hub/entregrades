@@ -1,54 +1,45 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- Lógica do Cronômetro (Scarcity) ---
-    function startTimer(duration, display) {
-        var timer = duration, minutes, seconds;
-        setInterval(function () {
-            minutes = parseInt(timer / 60, 10);
-            seconds = parseInt(timer % 60, 10);
+    // --- VÍDEO PLAYER ---
+    const videoContainer = document.querySelector('.video-box');
+    const video = document.getElementById('vsl-video');
+    const overlay = document.getElementById('video-overlay');
 
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-
-            display.textContent = minutes + ":" + seconds;
-
-            if (--timer < 0) {
-                timer = duration; // Reinicia o timer para loop infinito
-            }
-        }, 1000);
-    }
-
-    // Define 15 minutos (15 * 60 = 900 segundos)
-    var fifteenMinutes = 60 * 15;
-    var display = document.querySelector('#timer');
-    if(display) {
-        startTimer(fifteenMinutes, display);
-    }
-
-    // --- Lógica do FAQ (Acordeão) ---
-    var acc = document.getElementsByClassName("accordion-btn");
-    var i;
-
-    for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            
-            // Alterna o ícone
-            var icon = this.querySelector('i');
-            if (this.classList.contains("active")) {
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
-            } else {
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
-            }
-
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-            } 
+    if (video && overlay) {
+        overlay.addEventListener('click', () => {
+            video.muted = false;
+            video.play();
+            overlay.style.display = 'none';
+            video.setAttribute('controls', 'true');
         });
     }
+
+    // --- POPUP DE COMPRA (TOAST) ---
+    const toast = document.getElementById('toast');
+    const buyerName = document.getElementById('buyer-name');
+    const names = [
+        "João de SP comprou o Dossiê",
+        "Maria de RJ comprou o Dossiê",
+        "Carlos de MG comprou o Dossiê",
+        "Ana de RS comprou o Dossiê",
+        "Paulo de BA comprou o Dossiê"
+    ];
+
+    function showToast() {
+        if(!toast) return;
+        const randomName = names[Math.floor(Math.random() * names.length)];
+        buyerName.innerText = randomName;
+        toast.classList.remove('hide');
+        
+        setTimeout(() => {
+            toast.classList.add('hide');
+        }, 4000);
+    }
+
+    // Começa a aparecer depois de 5 segundos
+    setTimeout(() => {
+        showToast();
+        setInterval(showToast, 15000);
+    }, 5000);
+
 });
