@@ -8,780 +8,418 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
         /* --- RESET BÁSICO E CONFIGURAÇÕES GLOBAIS --- */
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { font-family: 'Roboto', sans-serif; line-height: 1.7; background-color: var(--branco); color: var(--cinza-texto); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        body { font-family: 'Roboto', sans-serif; line-height: 1.6; background-color: #f4f6f8; color: #333; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 
         /* --- VARIÁVEIS DE COR --- */
         :root {
             --verde-principal: #009245;
-            --verde-escuro-texto: #004d25; /* Novo para Garantia */
-            --amarelo-principal: #d7a800;
+            --verde-escuro: #006b28;
+            --amarelo-principal: #FFD700;
             --azul-principal: #003079;
             --branco: #ffffff;
-            --cinza-escuro: #003e21;
             --cinza-claro: #f8f9fa;
-            --cinza-texto: #343a40;
-            --gradiente-amarelo: linear-gradient(45deg, #FFC700, #FFB800);
-            --gradiente-verde: linear-gradient(45deg, #00A859, #009245);
+            --vermelho-alerta: #dc3545;
         }
 
-        .promo-banner { background-color: var(--azul-principal); color: var(--branco); text-align: center; padding: 14px 5%; font-weight: 700; font-size: 1rem; border-bottom: 3px solid var(--amarelo-principal); }
-        #countdown-timer { background-color: var(--amarelo-principal); color: var(--cinza-escuro); padding: 4px 12px; border-radius: 6px; margin-left: 10px; }
+        /* --- UTILITÁRIOS --- */
+        section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; text-align: center; }
+        h1, h2, h3 { font-family: 'Oswald', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        h1 { font-size: 2.2rem; text-shadow: 0 2px 5px rgba(0,0,0,0.2); line-height: 1.2; }
+        h2 { font-size: 2rem; margin-bottom: 30px; color: var(--azul-principal); }
+        .text-highlight { color: var(--verde-principal); }
 
-        /* --- ESTILOS GERAIS --- */
-        section { padding: 50px 5%; max-width: 1200px; margin: 0 auto; text-align: center; }
-        h1, h2, h3, h4, h5 { font-family: 'Oswald', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-        h1 { font-size: 2.5rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        h2 { font-size: 2.3rem; margin-bottom: 2rem; color: var(--azul-principal); }
+        /* --- HEADER & BARRA --- */
+        .promo-banner { background-color: var(--azul-principal); color: var(--branco); text-align: center; padding: 10px; font-weight: 700; font-size: 0.9rem; border-bottom: 4px solid var(--amarelo-principal); position: sticky; top: 0; z-index: 1000; }
+        #countdown-timer { background-color: var(--amarelo-principal); color: #000; padding: 2px 8px; border-radius: 4px; margin-left: 5px; }
 
-        /* --- HEADER & NAV --- */
-        .header { background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); padding: 1rem 5%; position: sticky; top: 0; z-index: 1000; }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
-        .logo { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.4rem; color: var(--azul-principal); text-decoration: none; z-index: 1001; text-transform: uppercase; }
+        /* --- NAV --- */
+        .header { background-color: #fff; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .logo { font-family: 'Oswald', sans-serif; font-size: 1.5rem; color: var(--azul-principal); text-decoration: none; font-weight: bold; }
         
-        .nav-links { position: fixed; left: -100%; top: 0; flex-direction: column; justify-content: center; align-items: center; background-color: rgba(10, 25, 47, 0.9); backdrop-filter: blur(10px); width: 100%; height: 100vh; transition: left 0.4s cubic-bezier(0.77, 0, 0.175, 1); z-index: 1000; display: flex; gap: 1.5rem; list-style: none; padding: 0; }
-        .nav-links.active { left: 0; }
-        .nav-links li { opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease, transform 0.4s ease; }
-        .nav-links.active li { opacity: 1; transform: translateY(0); }
-        .nav-links.active li:nth-child(1) { transition-delay: 0.2s; }
-        .nav-links.active li:nth-child(2) { transition-delay: 0.3s; }
-        .nav-links.active li:nth-child(3) { transition-delay: 0.4s; }
-        .nav-links.active li:nth-child(4) { transition-delay: 0.5s; }
-        .nav-links a { font-family: 'Oswald', sans-serif; color: var(--branco); font-size: 2.2rem; font-weight: 700; text-decoration: none; padding: 1rem; display: block; transition: color 0.3s ease; }
-        .nav-links a:hover { color: var(--amarelo-principal); }
-
-        .hamburger { display: block; cursor: pointer; background: none; border: none; z-index: 1001; }
-        .hamburger .bar { display: block; width: 28px; height: 3px; margin: 6px auto; transition: all 0.3s ease-in-out; background-color: var(--azul-principal); border-radius: 3px; }
-        .hamburger.active .bar { background-color: var(--amarelo-principal); }
-        .hamburger.active .bar:nth-child(2) { opacity: 0; }
-        .hamburger.active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-        .hamburger.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+        /* Menu Mobile Simples */
+        .nav-links { display: none; } 
+        @media (min-width: 768px) {
+            .nav-links { display: flex; gap: 20px; list-style: none; }
+            .nav-links a { text-decoration: none; color: #333; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; }
+            .nav-links a:hover { color: var(--verde-principal); }
+        }
 
         /* --- HERO --- */
-        .hero-section { background-image: linear-gradient(rgba(38, 38, 38, 0.7), rgba(53, 53, 53, 0.7)), url('images/fundo.png'); background-size: cover; background-position: center; background-attachment: fixed; color: var(--branco); padding: 100px 5%; text-align: center; }
-        .hero-content h1 { margin-bottom: 1.5rem; }
-        .hero-content p { font-size: 1.2rem; margin-bottom: 2.5rem; max-width: 650px; margin-left: auto; margin-right: auto; }
-        
-        .cta-button { position: relative; background: var(--gradiente-amarelo); color: var(--cinza-escuro); padding: 18px 40px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; border: none; box-shadow: 0 4px 20px rgba(255, 199, 0, 0.4); transition: transform 0.3s ease, box-shadow 0.3s ease; display: inline-block; }
-        .cta-button:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 10px 25px rgba(255, 199, 0, 0.5); }
-        
-        .secondary-cta { background: var(--gradiente-verde); color: var(--branco) !important; box-shadow: 0 4px 15px rgba(0, 146, 69, 0.3); margin-top: 2.5rem; padding: 16px 35px; font-size: 1rem; }
-        .secondary-cta:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 20px rgba(0, 146, 69, 0.4); }
+        .hero-section { background: url('images/fundo.png') center/cover no-repeat; padding: 80px 20px; color: #fff; position: relative; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 48, 121, 0.85); z-index: 0; }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .hero-content h1 { color: var(--amarelo-principal); text-shadow: 2px 2px 0px #000; margin-bottom: 20px; }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 30px; color: #e0e0e0; }
 
-        .video-wrapper { position: relative; margin-top: 2.5rem; max-width: 800px; margin-left: auto; margin-right: auto; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 3px solid var(--amarelo-principal); }
-        .video-wrapper video { width: 100%; display: block; }
-        #video-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); display: flex; justify-content: center; align-items: center; z-index: 1; cursor: pointer; transition: opacity 0.3s ease; }
-        #unmute-button { background: var(--gradiente-amarelo); color: var(--cinza-escuro); border: none; border-radius: 50px; padding: 15px 30px; font-family: 'Oswald', sans-serif; font-size: 1.2rem; font-weight: 700; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: transform 0.2s ease; }
-        #unmute-button:hover { transform: scale(1.05); }
+        /* VSL */
+        .video-wrapper { border: 4px solid var(--amarelo-principal); border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); background: #000; position: relative; aspect-ratio: 16/9; margin-bottom: 30px; }
+        .video-wrapper video { width: 100%; height: 100%; object-fit: cover; }
+        #video-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 2; }
+        #unmute-button { background: var(--verde-principal); color: #fff; border: none; padding: 15px 30px; font-size: 1.2rem; font-weight: bold; border-radius: 50px; cursor: pointer; animation: pulse 2s infinite; display: flex; align-items: center; gap: 10px; }
 
-        /* --- MANIFESTO --- */
-        .manifesto-section { background: linear-gradient(180deg, var(--cinza-escuro) 0%, #3a3a3a 100%); color: var(--branco); overflow: hidden; position: relative; }
-        .manifesto-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><rect fill="%231a1a1a" width="800" height="800"/><g fill-opacity="0.1"><circle fill="%23002776" cx="400" cy="400" r="600"/><circle fill="%231a1a1a" cx="400" cy="400" r="500"/><circle fill="%23002776" cx="400" cy="400" r="400"/><circle fill="%231a1a1a" cx="400" cy="400" r="300"/><circle fill="%23002776" cx="400" cy="400" r="200"/><circle fill="%231a1a1a" cx="400" cy="400" r="100"/></g></svg>'); background-size: cover; opacity: 0.1; }
-        .manifesto-section h2 { color: var(--amarelo-principal); text-shadow: 0 0 15px rgba(255, 199, 0, 0.5); }
-        .manifesto-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin: 2.5rem 0; max-width: 900px; margin-left: auto; margin-right: auto; }
-        .manifesto-item { border: 1px solid rgba(0, 39, 118, 0.5); padding: 2rem; border-radius: 16px; background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(5px); transition: all 0.3s ease; }
-        .manifesto-item:hover { background-color: rgba(255, 255, 255, 0.1); border-color: var(--amarelo-principal); }
-        .manifesto-item h3 { color: var(--branco); margin-bottom: 1rem; font-size: 1.4rem; }
-        .manifesto-solution { font-size: 1.3rem; font-weight: 700; max-width: 700px; margin: 2.5rem auto 0 auto; color: var(--cinza-claro); line-height: 1.5; }
+        /* CTA BUTTON */
+        .cta-button { display: inline-block; background: linear-gradient(180deg, #ffdf00 0%, #d4af37 100%); color: #000; padding: 18px 40px; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: 1.2rem; text-transform: uppercase; box-shadow: 0 4px 0 #b8860b, 0 10px 20px rgba(0,0,0,0.2); transition: transform 0.2s; font-family: 'Oswald', sans-serif; width: 100%; max-width: 400px; }
+        .cta-button:hover { transform: translateY(-3px); filter: brightness(1.1); }
+        .cta-button:active { transform: translateY(2px); box-shadow: none; }
 
-        /* --- APRESENTAÇÃO (SLIDER ANTIGO - PODE MANTER O CSS) --- */
-        .presentation-section { background-color: var(--cinza-claro); }
-        .slider-container { position: relative; max-width: 900px; margin: auto; overflow: hidden; border-radius: 16px; box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
-        .slides { display: flex; transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1); }
+        /* --- MANIFESTO / DORES --- */
+        .manifesto-section { background: #fff; }
+        .manifesto-grid { display: grid; gap: 20px; margin-top: 30px; }
+        @media (min-width: 768px) { .manifesto-grid { grid-template-columns: repeat(3, 1fr); } }
+        .manifesto-item { background: #f9f9f9; padding: 25px; border-radius: 10px; border: 1px solid #eee; transition: transform 0.3s; }
+        .manifesto-item:hover { transform: translateY(-5px); border-color: var(--verde-principal); }
+        .manifesto-item h3 { color: var(--azul-principal); font-size: 1.3rem; margin-bottom: 10px; }
+        .manifesto-item p { font-size: 0.95rem; color: #555; }
+
+        /* --- PREVIEW SLIDER --- */
+        .presentation-section { background-color: #f4f6f8; }
+        .slider-container { position: relative; max-width: 600px; margin: 0 auto; overflow: hidden; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .slides { display: flex; transition: transform 0.5s ease; }
         .slide { min-width: 100%; }
         .slide img { width: 100%; display: block; }
-        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(255, 255, 255, 0.8); color: var(--azul-principal); border: 1px solid rgba(0,0,0,0.1); width: 50px; height: 50px; border-radius: 50%; font-size: 1.5rem; font-weight: bold; z-index: 10; cursor: pointer; display: flex; justify-content: center; align-items: center; }
-        .prev-btn { left: 15px; } .next-btn { right: 15px; }
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: #fff; border: none; font-size: 2rem; cursor: pointer; padding: 10px; z-index: 10; }
+        .prev-btn { left: 10px; } .next-btn { right: 10px; }
 
         /* --- BENEFÍCIOS --- */
-        .benefits-section { background-color: var(--branco); }
-        .benefits-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; text-align: left; max-width: 900px; margin: 2.5rem auto 0 auto; }
-        .benefit-item { background: var(--cinza-claro); padding: 2rem; border-radius: 16px; border-left: 5px solid var(--verde-principal); }
-        .benefit-item h3 { font-size: 1.3rem; color: var(--azul-principal); margin-bottom: 0.5rem; }
+        .benefits-section { background: #fff; }
+        .benefits-grid { display: grid; gap: 15px; text-align: left; max-width: 800px; margin: 0 auto; }
+        @media (min-width: 768px) { .benefits-grid { grid-template-columns: 1fr 1fr; } }
+        .benefit-item { display: flex; align-items: flex-start; gap: 10px; padding: 15px; background: #f9f9f9; border-radius: 8px; }
+        .benefit-item h3 { margin: 0; font-size: 1rem; color: #333; }
+        
+        /* --- OFERTA (CARDs PROFISSIONAIS) --- */
+        .offer-section { background: linear-gradient(to bottom, #003079, #001f4d); color: #fff; padding-bottom: 80px; }
+        .offer-section h2 { color: var(--amarelo-principal); }
+        
+        .offer-grid { display: flex; flex-direction: column; gap: 30px; align-items: center; margin-top: 40px; }
+        @media (min-width: 768px) { .offer-grid { flex-direction: row; justify-content: center; align-items: stretch; } }
 
-        /* --- DEPOIMENTOS NOVO (SWIPER) --- */
-        /* Estilos específicos para o Swiper de depoimentos */
-        .swiper {
-            width: 100%;
-            padding-top: 20px;
-            padding-bottom: 50px;
-        }
-        .swiper-slide {
-            background-position: center;
-            background-size: cover;
-            width: 300px; /* Largura ideal para celular */
-            /* filter: blur(2px); */ /* Se quiser focar só no meio */
-            opacity: 0.6;
-            transition: all 0.3s ease;
-            transform: scale(0.85); /* Começa menor */
-        }
-        .swiper-slide-active {
-            /* filter: blur(0); */
-            opacity: 1;
-            transform: scale(1.05); /* Zoom no slide ativo */
-            z-index: 2;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            border-radius: 12px;
-        }
-        .swiper-slide img {
-            display: block;
-            width: 100%;
-            border-radius: 12px;
-        }
-        .swiper-pagination-bullet-active {
-            background-color: var(--verde-principal) !important;
-        }
+        .card { background: #fff; color: #333; border-radius: 15px; width: 100%; max-width: 380px; overflow: hidden; position: relative; display: flex; flex-direction: column; }
+        
+        /* Card Básico */
+        .card.basic { border: 1px solid #ccc; opacity: 0.95; }
+        .card.basic .card-header { background: #e0e0e0; padding: 15px; color: #555; }
+        
+        /* Card Premium */
+        .card.premium { border: 4px solid var(--amarelo-principal); transform: scale(1.02); box-shadow: 0 0 30px rgba(255, 215, 0, 0.3); z-index: 10; }
+        .best-seller { position: absolute; top: 0; left: 0; width: 100%; background: var(--amarelo-principal); color: #000; font-weight: 800; padding: 5px; font-size: 0.8rem; text-transform: uppercase; }
+        .card.premium .card-header { background: #003079; color: #fff; padding: 30px 15px 15px; } /* Mais padding top por causa da faixa */
 
-        /* --- PRODUTOS --- */
-        .ebooks-section { background-color: var(--cinza-claro); }
-        .ebooks-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 450px; margin: 0 auto; }
-        .ebook-card { background: var(--branco); border: 1px solid #e0e0e0; border-radius: 16px; padding: 1.5rem; box-shadow: 0 8px 24px rgba(0,0,0,0.05); display: flex; flex-direction: column; position: relative; overflow: hidden; }
-        .ebook-card:hover { transform: translateY(-8px); box-shadow: 0 16px 35px rgba(0,0,0,0.1); }
-        .ebook-cover { max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .ebook-card h3 { font-size: 1.6rem; color: var(--cinza-escuro); margin-bottom: 0.5rem; }
-        .product-price .old-price { font-size: 1rem; color: #999; text-decoration: line-through; margin-right: 8px; }
-        .product-price .new-price { font-size: 1.8rem; font-weight: 700; color: var(--verde-principal); }
-        .payment-badges { display: flex; justify-content: center; gap: 8px; margin-bottom: 1.5rem; }
-        .payment-badges span { font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 4px; background-color: #e9e9e9; color: #555; }
-        .buy-button { background: var(--gradiente-verde); color: var(--branco); padding: 14px 25px; border-radius: 8px; text-decoration: none; font-weight: 700; text-transform: uppercase; width: 100%; display: inline-block; box-shadow: 0 4px 15px rgba(0, 146, 69, 0.3); transition: all 0.3s ease; }
-        .buy-button:hover { transform: translateY(-3px); }
-        .urgency-text { font-size: 0.8rem; font-weight: 700; color: #c9302c; margin-top: 1rem; text-transform: uppercase; }
+        .card-img { padding: 20px; background: #fff; text-align: center; }
+        .card-img img { max-width: 150px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
-        /* --- COMBO --- */
-        .combo-section { background: linear-gradient(180deg, #eaf5ff 0%, var(--branco) 100%); padding: 60px 5%; }
-        .combo-card { background: var(--branco); border: 10px solid var(--amarelo-principal); border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); overflow: hidden; position: relative; animation: pulse-glow 2.5s infinite ease-in-out; }
-        .best-seller-seal { position: absolute; top: 15px; right: -35px; background: var(--gradiente-amarelo); color: var(--cinza-escuro); padding: 5px 35px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; transform: rotate(45deg); box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 2; animation: shake-seal 4s infinite ease-in-out 1.5s; }
-        .combo-image img { width: 100%; display: block; }
-        .combo-details { padding: 2rem; display: flex; flex-direction: column; align-items: center; }
-        .combo-details h3 { font-size: 2rem; color: var(--azul-principal); margin-bottom: 1rem; }
-        .combo-social-proof { font-size: 1.1rem; font-weight: 700; color: var(--azul-principal); margin-bottom: 1.5rem; }
-        .combo-social-proof strong { color: var(--verde-principal); }
-        .combo-details ul { list-style: none; margin-bottom: 1.5rem; padding: 0; width: 100%; text-align: left; }
-        .combo-details ul li { margin-bottom: 0.75rem; font-weight: 700; color: var(--verde-principal); font-size: 1.1rem; }
-        .combo-details ul li strong { color: var(--amarelo-principal); }
-        .combo-price .old-price { font-size: 1.3rem; color: #999; text-decoration: line-through; display: block; }
-        .combo-price .new-price { font-size: 2.8rem; font-weight: 700; color: var(--verde-principal); display: block; }
-        .combo-button { width: 100%; max-width: 400px; font-size: 1.3rem; padding: 20px 30px; margin-bottom: 1.5rem; }
+        .price-area { padding: 10px; text-align: center; }
+        .old-price { text-decoration: line-through; color: #999; font-size: 0.9rem; }
+        .current-price { font-size: 2.5rem; font-weight: 800; color: #333; line-height: 1; }
+        .installments { font-size: 0.9rem; color: #666; margin-top: 5px; }
+        
+        .card.premium .current-price { color: var(--verde-principal); }
 
-        @keyframes pulse-glow { 0% { box-shadow: 0 0 20px rgba(215, 168, 0, 0.3); border-color: var(--amarelo-principal); } 50% { box-shadow: 0 0 35px rgba(215, 168, 0, 0.6); border-color: #ffd900; } 100% { box-shadow: 0 0 20px rgba(215, 168, 0, 0.3); border-color: var(--amarelo-principal); } }
-        @keyframes shake-seal { 0%, 100% { transform: rotate(45deg) scale(1.0); } 5% { transform: rotate(50deg) scale(1.15); } 10% { transform: rotate(42deg) scale(1.15); } 15% { transform: rotate(45deg) scale(1.15); } }
+        .features { padding: 20px; text-align: left; flex-grow: 1; }
+        .features ul { list-style: none; padding: 0; }
+        .features li { margin-bottom: 10px; font-size: 0.95rem; border-bottom: 1px solid #eee; padding-bottom: 5px; display: flex; gap: 8px; }
+        .features i { margin-top: 4px; }
+        .check { color: var(--verde-principal); }
+        .cross { color: var(--vermelho-alerta); }
+        .bold-red { color: var(--vermelho-alerta); font-weight: 700; }
 
-        /* --- GARANTIA NOVA (Estilo Clean - Imagem 3) --- */
-        .guarantee-section {
-            background-color: #ffffff; /* Fundo Branco Limpo */
-            padding: 80px 5%;
-            text-align: center;
-        }
-        .clean-seal-wrapper {
-            margin-bottom: 30px;
-        }
-        .clean-seal {
-            width: 140px;
-            height: 140px;
-            background-color: var(--verde-principal);
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            border: 4px solid #eab308; /* Dourado */
-            margin: 0 auto;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-        }
-        .clean-seal span.days {
-            font-size: 4rem;
-            font-weight: 800;
-            line-height: 1;
-            font-family: 'Oswald', sans-serif;
-        }
-        .clean-seal span.text {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            line-height: 1.2;
-        }
-        .guarantee-section h2 {
-            color: var(--verde-escuro-texto); /* Verde escuro sério */
-            font-size: 2rem;
-            margin-bottom: 20px;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-        .guarantee-section p {
-            color: #555;
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto 40px auto;
-            line-height: 1.6;
-        }
-        .clean-btn-guarantee {
-            background-color: var(--verde-principal);
-            color: white;
-            padding: 18px 40px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 10px rgba(0, 146, 69, 0.4);
-            display: inline-block;
-            transition: transform 0.2s;
-        }
-        .clean-btn-guarantee:hover {
-            transform: translateY(-3px);
-            background-color: #007a3a;
-        }
+        .premium-features { background: #f0fdf4; border: 1px solid #bbf7d0; padding: 10px; border-radius: 8px; margin-top: 10px; }
+        .premium-features p { font-weight: 800; font-size: 0.9rem; color: var(--verde-escuro); margin-bottom: 5px; }
+
+        .btn-buy { display: block; padding: 15px; text-align: center; font-weight: 800; text-decoration: none; text-transform: uppercase; border-radius: 0 0 15px 15px; margin-top: auto; font-family: 'Oswald', sans-serif; font-size: 1.2rem; }
+        .btn-basic { background: #ccc; color: #333; }
+        .btn-premium { background: var(--verde-principal); color: #fff; box-shadow: 0 -4px 20px rgba(0, 146, 69, 0.4); animation: pulse 2s infinite; }
+
+        /* --- GARANTIA (Clean) --- */
+        .guarantee-section { background: #fff; padding: 80px 20px; }
+        .seal { width: 120px; margin: 0 auto 20px; }
+        .guarantee-content { max-width: 700px; margin: 0 auto; }
+        .guarantee-content h3 { color: var(--verde-escuro); font-size: 1.8rem; margin-bottom: 15px; }
+
+        /* --- DEPOIMENTOS (Swiper) --- */
+        .testimonials-section { background: #f9f9f9; }
+        .swiper { width: 100%; padding-top: 20px; padding-bottom: 50px; }
+        .swiper-slide { background-position: center; background-size: cover; width: 300px; height: auto; }
+        .swiper-slide img { display: block; width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
         /* --- FAQ --- */
-        .faq-section { background-color: var(--cinza-claro); }
-        .faq-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; text-align: left; max-width: 800px; margin: 0 auto; }
-        .faq-item { background: var(--branco); border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden; }
-        .faq-question { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 1.5rem; }
-        .faq-question h4 { font-size: 1.3rem; color: var(--cinza-escuro); margin: 0; }
-        .faq-toggle { font-size: 2rem; color: var(--azul-principal); transition: transform 0.3s ease; }
-        .faq-item.active .faq-toggle { transform: rotate(45deg); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
-        .faq-answer p { padding: 0 1.5rem 1.5rem 1.5rem; margin: 0; }
+        .faq-section { background: #fff; }
+        .faq-item { border-bottom: 1px solid #eee; text-align: left; max-width: 800px; margin: 0 auto; }
+        .faq-question { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: 0.3s; padding: 0 20px; color: #555; }
+        .faq-item.active .faq-answer { padding-bottom: 20px; max-height: 200px; }
+        .faq-item.active .faq-question { color: var(--verde-principal); }
 
         /* --- FOOTER --- */
-        .footer { background-color: var(--cinza-escuro); color: var(--branco); text-align: center; padding: 3rem 5%; }
-        .footer-links a { color: var(--branco); margin: 0 10px; font-size: 0.9rem; text-decoration: none; }
-        .social-links { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
-        .social-links a { color: var(--amarelo-principal); display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
-        .social-links svg { width: 24px; height: 24px; fill: currentColor; }
+        footer { background: #222; color: #aaa; padding: 40px 20px; font-size: 0.9rem; }
+        footer a { color: #fff; text-decoration: none; }
 
         /* --- UTILS --- */
-        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; display: flex; justify-content: center; align-items: center; box-shadow: 2px 2px 6px rgba(0,0,0,0.25); z-index: 100; transition: transform 0.3s ease; }
-        .whatsapp-float:hover { transform: scale(1.1); }
-        .whatsapp-float svg { width: 32px; height: 32px; fill: white; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 9999; }
+        
+        .purchase-popup { position: fixed; bottom: 20px; left: 20px; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); z-index: 9998; border-left: 5px solid var(--verde-principal); display: none; max-width: 300px; text-align: left; font-size: 0.85rem; }
+        .purchase-popup.show { display: block; animation: slideIn 0.5s ease; }
+        @keyframes slideIn { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-        .purchase-popup { position: fixed; bottom: 20px; left: 20px; background: linear-gradient(135deg, #ffffff, #f7f8fa); padding: 0; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 2000; opacity: 0; transform: translateY(20px) scale(0.95); transition: opacity 0.4s ease, transform 0.4s ease; visibility: hidden; display: flex; align-items: center; border: 1px solid #e0e0e0; }
-        .purchase-popup::before { content: '✓'; font-size: 1.5rem; font-weight: 700; color: var(--branco); background-color: var(--verde-principal); padding: 1.5rem 1rem; border-top-left-radius: 11px; border-bottom-left-radius: 11px; }
-        .purchase-popup.show { opacity: 1; transform: translateY(0) scale(1); visibility: visible; }
-        .popup-content { padding: 1rem 1.5rem; text-align: left; }
-        .popup-content p { margin: 0; font-size: 0.9rem; font-weight: 700; }
-        .popup-content span { font-size: 0.8rem; color: #666; }
-
-        /* --- ANIMATIONS SCROLL --- */
-        .animated-section > * { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-        .animated-section.visible > * { opacity: 1; transform: translateY(0); }
-
-        /* --- RESPONSIVIDADE --- */
-        @media (min-width: 768px) {
-            .hamburger { display: none; }
-            .nav-links { position: static; height: auto; width: auto; background: transparent; flex-direction: row; gap: 2rem; padding: 0; }
-            .nav-links li { opacity: 1; transform: none; }
-            .nav-links a { color: var(--cinza-escuro); font-size: 1rem; }
-            .nav-links a:hover { color: var(--verde-principal); }
-            
-            section { padding: 80px 5%; }
-            .hero-content p { max-width: 600px; margin: 0 auto 2.5rem auto; }
-            .benefits-grid, .ebooks-grid, .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
-            .manifesto-grid { grid-template-columns: repeat(3, 1fr); }
-            .combo-card { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 3rem; max-width: 1000px; margin: 0 auto; }
-            .combo-details { padding: 3rem; }
-        }
-        @media (min-width: 1024px) {
-            h1 { font-size: 3.5rem; }
-            h2 { font-size: 3rem; }
-            .ebooks-grid { grid-template-columns: repeat(2, 1fr); }
-            .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-        @media (max-width: 768px) {
-            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; }
-            .whatsapp-float svg { width: 28px; height: 28px; }
+        @media (max-width: 480px) {
+            h1 { font-size: 1.8rem; }
+            .offer-grid { gap: 40px; }
         }
     </style>
 </head>
 <body>
 
     <div class="promo-banner">
-        <span>🔥 A PROMOÇÃO ACABA EM: <span id="countdown-timer">21:00</span></span>
+        <span>🔥 A PROMOÇÃO ACABA EM: <span id="countdown-timer">14:59</span></span>
     </div>
 
     <header class="header">
-        <nav class="nav-container">
+        <div class="nav-container">
             <a href="#" class="logo">Brasil Acima de Tudo</a>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#ebooks">Produtos</a></li>
-                <li><a href="#combo">Oferta Especial</a></li>
+            <ul class="nav-links">
+                <li><a href="#oferta">Produtos</a></li>
                 <li><a href="#depoimentos">Depoimentos</a></li>
                 <li><a href="#faq">Dúvidas</a></li>
             </ul>
-            <button class="hamburger" id="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-        </nav>
+        </div>
     </header>
 
-    <main>
-        <section id="hero" class="hero-section">
-            <div class="hero-content">
-                <h1>A VERDADE SOBRE A PRISÃO DE BOLSONARO QUE A MÍDIA ESCONDEU</h1>
-                <p>Conhecimento e verdade para fortalecer a nação. Leia nossos documentários e faça parte da mudança.</p>
-                <a href="#combo" class="cta-button">VER CONTEÚDO PROIBIDO</a>
-                <div class="video-wrapper">
-                    <video id="hero-video" autoplay loop muted playsinline>
-                        <source src="images/video.mp4" type="video/mp4">
-                        Seu navegador não suporta a tag de vídeo.
-                    </video>
-                    <div id="video-overlay">
-                        <button id="unmute-button">ATIVAR SOM</button>
-                    </div>
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>A VERDADE SOBRE A PRISÃO DE BOLSONARO QUE A MÍDIA ESCONDEU</h1>
+            <p>Conhecimento e verdade para fortalecer a nação. Descubra os fatos que a TV não mostra.</p>
+            
+            <div class="video-wrapper">
+                <video id="hero-video" poster="images/fundo.png" loop playsinline>
+                    <source src="images/video.mp4" type="video/mp4">
+                </video>
+                <div id="video-overlay">
+                    <button id="unmute-button"><i class="fas fa-volume-up"></i> ATIVAR SOM AGORA</button>
                 </div>
             </div>
-        </section>
 
-        <section id="manifesto" class="manifesto-section animated-section">
-            <h2>Você Sente que sua Voz Foi Silenciada?</h2>
-            <div class="manifesto-grid">
-                <div class="manifesto-item">
-                    <h3>A INJUSTIÇA</h3>
-                    <p>O presidente mais votado da direita se tornou alvo de uma perseguição política sem precedentes, acusado e declarado inelegível em processos questionáveis.</p>
-                </div>
-                <div class="manifesto-item">
-                    <h3>A CENSURA</h3>
-                    <p>Redes sociais são bloqueadas, perfis são derrubados e a simples expressão de opinião conservadora é tratada como crime.</p>
-                </div>
-                <div class="manifesto-item">
-                    <h3>A NARRATIVA</h3>
-                    <p>A grande mídia e o sistema querem impor uma única verdade, silenciando metade do Brasil que se recusa a abaixar a cabeça.</p>
-                </div>
-            </div>
-            <p class="manifesto-solution">Eles querem nos calar, mas o conhecimento é a nossa arma. É hora de entender o jogo, fortalecer nossos argumentos e lutar pela verdade.</p>
-            <a href="#ebooks" class="cta-button secondary-cta">QUERO O DOCUMENTÁRIO BÁSICO POR R$17</a>
-        </section>
-
-        <section id="presentation" class="presentation-section animated-section">
-            <h2>Uma Amostra do Nosso Conteúdo</h2>
-            <div class="slider-container">
-                <div class="slides">
-                    <div class="slide"><img src="images/apresentação 1.png" alt="Amostra do produto 1"></div>
-                    <div class="slide"><img src="images/apresentação 2.png" alt="Amostra do produto 2"></div>
-                    <div class="slide"><img src="images/apresentação 3.png" alt="Amostra do produto 3"></div>
-                    <div class="slide"><img src="images/apresentação 4.png" alt="Amostra do produto 4"></div>
-                </div>
-                <button class="slider-btn prev-btn">‹</button>
-                <button class="slider-btn next-btn">›</button>
-            </div>
-             <a href="#ebooks" class="cta-button secondary-cta">QUERO O DOCUMENTÁRIO BÁSICO POR R$17</a>
-        </section>
-
-        <section id="benefits" class="benefits-section animated-section">
-            <h2>Por menos que uma ida ao mercado, veja o que você vai ganhar adquirindo nosso documentário:</h2>
-            <div class="benefits-grid">
-                <div class="benefit-item">
-                    <h3>✅ Conhecimento real e argumentos poderosos</h3>
-                    <p>Tenha acesso a fatos, datas e provas concretas para vencer qualquer discussão com confiança.</p>
-                </div>
-                <div class="benefit-item">
-                    <h3>✅ Verdades que querem esconder</h3>
-                    <p>Descubra o que tentam apagar da memória nacional, revelado de forma clara e objetiva.</p>
-                </div>
-                <div class="benefit-item">
-                    <h3>✅ Autoridade nas conversas</h3>
-                    <p>Chega de ficar sem resposta! Tenha informação para rebater qualquer mentira com tranquilidade.</p>
-                </div>
-                <div class="benefit-item">
-                    <h3>✅ Opções para aprender do seu jeito</h3>
-                    <p>Versão Premium com conteúdo aprofundado e um pacote completo para quem quer dominar todos os detalhes.</p>
-                </div>
-                <div class="benefit-item">
-                    <h3>✅ Entrega imediata e garantia</h3>
-                    <p>Acesso instantâneo após a compra e 7 dias para solicitar reembolso, sem burocracia.</p>
-                </div>
-                <div class="benefit-item">
-                    <h3>✅ Apoio à liberdade e à justiça</h3>
-                    <p>Ao adquirir, você se junta a uma causa maior: defender a verdade e a liberdade no Brasil.</p>
-                </div>
-            </div>
-            <a href="#ebooks" class="cta-button secondary-cta">QUERO O DOCUMENTÁRIO BÁSICO POR R$17</a>
-        </section>
-
-        <section id="depoimentos" class="testimonials-section animated-section">
-            <h2>O que nossos leitores dizem</h2>
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="images/whats 1.jpg" alt="Depoimento 1"></div>
-                    <div class="swiper-slide"><img src="images/whats 2.jpg" alt="Depoimento 2"></div>
-                    <div class="swiper-slide"><img src="images/whats 3.jpg" alt="Depoimento 3"></div>
-                    <div class="swiper-slide"><img src="images/whats 4.jpg" alt="Depoimento 4"></div>
-                    <div class="swiper-slide"><img src="images/whats 5.jpg" alt="Depoimento 5"></div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </section>
-
-        <section id="ebooks" class="ebooks-section animated-section">
-            <h2>Nosso Produto</h2>
-            <div class="ebooks-grid">
-                <div class="ebook-card">
-                    <img src="images/Documentário 1.png" alt="Capa do Documentário Básico" class="ebook-cover">
-                    <h3>Documentário Básico</h3>
-                    <p class="ebook-description" style="text-align: left; padding: 0 1rem;">
-                        Perfeita para quem quer começar a entender o fenômeno Bolsonaro<br><br>
-                        ✅ 5 capítulos resumidos com os principais acontecimentos<br>
-                        ✅ Leitura rápida<br>
-                        ✅ Preço acessível para todos os bolsos<br><br>
-                        💡 Ideal para: Quem tem curiosidade, mas ainda não é familiarizado com a trajetória do Bolsonaro.
-                    </p>
-                    <div class="product-price">
-                        <span class="old-price">R$ 39,90</span>
-                        <span class="new-price">R$ 17,00</span>
-                    </div>
-                    <div class="payment-badges">
-                        <span class="badge-pix">PIX</span>
-                        <span class="badge-boleto">BOLETO</span>
-                        <span class="badge-card">CARTÃO</span>
-                    </div>
-                    <a href="https://pay.kirvano.com/e9bfa0a4-2a23-4f16-a806-ddf2f5dd9281" class="buy-button">Comprar Agora</a>
-                     <p class="urgency-text">🔥 Vagas com desconto se esgotando!</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="combo" class="combo-section animated-section">
-            <h2>OFERTA ESPECIAL: Documentário PREMIUM</h2>
-            <div class="combo-card">
-                <div class="best-seller-seal">Mais Vendido</div>
-                <div class="combo-image">
-                    <img src="images/Documentário 2.png" alt="Capa do Documentário Premium" class="testimonial-image">
-                </div>
-                <div class="combo-details">
-                    <h3>🎁 DOCUMENTÁRIO PREMIUM</h3>
-                    <p>Para quem quer mergulhar fundo na verdade não contada.</p>
-                    <p class="combo-social-proof"><strong>7 de 10 pessoas</strong> decidem pegar essa promoção<br>POIS VOCÊ ECONOMIZA <strong>R$ 75</strong></p>
-                    
-                    <ul style="text-align: left; list-style-type: none; padding-left: 0; width: 100%; margin-bottom: 1.5rem;">
-                        <li>✅ 25+ páginas detalhadas com investigação exclusiva</li>
-                        <li>✅ 7 Capítulos expandidos com dados, fontes e documentos</li>
-                        <li>✅ Conteúdo inédito sobre perseguição judicial e exílio</li>
-                        <li>✅ Imagens exclusivas e documentos "vazados"</li>
-                        <li>✅ Análise estratégica do futuro político de Bolsonaro</li>
-                        <li style="margin-top:0.5rem;">✅ <strong>+Bônus:</strong></li>
-                        <li style="padding-left: 1.5rem;">📂 Atualizações futuras do pacote PREMIUM</li>
-                        <li style="padding-left: 1.5rem;">🔐 Acesso ao grupo do WhatsApp com atualizações e noticias políticas</li>
-                    </ul>
-
-                    <p style="font-weight: bold;">💡 Ideal para: Apoiadores ferrenhos, pesquisadores e quem quer dominar o assunto.</p>
-                    
-                    <div class="combo-price">
-                        <span class="old-price">De R$ 97,00</span>
-                        <span class="new-price">por apenas R$ 22,00</span>
-                    </div>
-                    <a href="https://pay.kirvano.com/7f694891-cee9-4641-8374-a06e448801a5" class="cta-button combo-button">QUERO O DOCUMENTÁRIO PREMIUM AGORA!</a>
-                    <div class="payment-badges">
-                        <span class="badge-pix">PIX</span>
-                        <span class="badge-boleto">BOLETO</span>
-                        <span class="badge-card">CARTÃO</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="garantia" class="guarantee-section animated-section">
-            <div class="clean-seal">
-                <span class="days">7</span>
-                <span class="text">DIAS DE GARANTIA</span>
-            </div>
-            <h2>SUA COMPRA É 100% SEGURA E SEM RISCOS!</h2>
-            <p>Você tem 7 dias completos para explorar todo o material. Se, por qualquer motivo, você não ficar totalmente satisfeito, basta nos enviar um único e-mail e nós devolveremos 100% do seu investimento. Sem burocracia, sem perguntas. O risco é todo nosso!</p>
-            <a href="#ebooks" class="clean-btn-guarantee">QUERO MINHA CÓPIA BÁSICA COM GARANTIA</a>
-        </section>
-
-        <section id="faq" class="faq-section animated-section">
-            <h2>Perguntas Frequentes</h2>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>O pagamento é seguro?</h4>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Sim! Utilizamos as maiores plataformas de pagamento do Brasil. Seus dados estão 100% seguros.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>Como recebo os produtos?</h4>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Após a confirmação do pagamento, você receberá um e-mail com os links para baixar todo o material na mesma hora.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>Posso ler no celular ou Kindle?</h4>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Com certeza! O arquivo PDF é compatível com todos os dispositivos.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>Como funciona a garantia de 7 dias?</h4>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Você tem 7 dias completos para avaliar o material. Se por qualquer motivo não ficar satisfeito, basta enviar um e-mail e nós devolvemos 100% do seu dinheiro, sem perguntas.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>As informações são baseadas em factos?</h4>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Absolutamente. Todo o nosso conteúdo é fruto de uma pesquisa aprofundada, com fontes verificadas, para garantir que você tenha acesso apenas à verdade dos factos.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>Terei acesso a atualizações futuras?</h4>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Sim! Ao adquirir qualquer um dos nossos produtos, você garante acesso vitalício a todas as futuras atualizações e revisões do material, sem custo adicional.</p>
-                    </div>
-                </div>
-            </div>
-            <a href="#ebooks" class="cta-button secondary-cta">QUERO GARANTIR O MEU ACESSO BÁSICO</a>
-        </section>
-
-        <section id="sobre" class="about-section animated-section">
-            <div class="about-content">
-                <h2>Nossa Missão é o Brasil</h2>
-                <p>Acreditamos que a informação é a ferramenta mais poderosa para a mudança. Nosso objetivo é fornecer conhecimento claro e acessível para todos que amam esta nação e desejam lutar por um futuro de ordem e progresso.</p>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a>
-            </div>
-            <p>&copy; <span id="copyright-year">2024</span> Brasil Acima de Tudo. Todos os direitos reservados.</p>
-            <div class="social-links">
-                <a href="https://www.facebook.com/share/1HzSvLUAgn/" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.64 10 6.7v2.8H7v4h3v8h4v-8z"/></svg>
-                    <span>Facebook</span>
-                </a>
-                <a href="http://www.instagram.com/entregrades22/" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/></svg>
-                    <span>@entregrades22</span>
-                </a>
-                <a href="mailto:entregrades22@gmail.com" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
-                    <span>entregrades22@gmail.com</span>
-                </a>
-            </div>
-            <p class="footer-support-message">O suporte responde em até 24 horas.</p>
+            <a href="#oferta" class="cta-button">QUERO VER OS DOCUMENTOS</a>
         </div>
+    </section>
+
+    <section class="manifesto-section">
+        <h2>VOCÊ SENTE QUE TENTAM TE CALAR?</h2>
+        <div class="manifesto-grid">
+            <div class="manifesto-item">
+                <h3>A INJUSTIÇA</h3>
+                <p>Perseguição política implacável contra o líder da direita e processos questionáveis.</p>
+            </div>
+            <div class="manifesto-item">
+                <h3>A CENSURA</h3>
+                <p>Redes sociais bloqueadas e perfis derrubados apenas por expressar opinião.</p>
+            </div>
+            <div class="manifesto-item">
+                <h3>A NARRATIVA</h3>
+                <p>A mídia impõe uma única verdade. Nós mostramos o outro lado.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="presentation-section">
+        <h2>UMA AMOSTRA DO QUE VOCÊ VAI RECEBER</h2>
+        <div class="slider-container">
+            <div class="slides">
+                <div class="slide"><img src="images/apresentação 1.png"></div>
+                <div class="slide"><img src="images/apresentação 2.png"></div>
+                <div class="slide"><img src="images/apresentação 3.png"></div>
+            </div>
+            <button class="slider-btn prev-btn">‹</button>
+            <button class="slider-btn next-btn">›</button>
+        </div>
+    </section>
+
+    <section id="oferta" class="offer-section">
+        <h2>ESCOLHA SEU PACOTE DE LIBERTAÇÃO</h2>
+        
+        <div class="offer-grid">
+            
+            <div class="card basic">
+                <div class="card-header">
+                    <h3>DOCUMENTÁRIO BÁSICO</h3>
+                    <small>Ideal para iniciantes</small>
+                </div>
+                <div class="card-img">
+                    <img src="images/Documentário 1.png" alt="Básico">
+                </div>
+                <div class="price-area">
+                    <span class="old-price">R$ 39,90</span>
+                    <div class="current-price">R$ 17,00</div>
+                    <p class="installments">À vista no PIX</p>
+                </div>
+                <div class="features">
+                    <ul>
+                        <li><i class="fas fa-check check"></i> Módulo 1: Origem e Formação</li>
+                        <li><i class="fas fa-check check"></i> Módulo 2: Ascensão Política</li>
+                        <li><i class="fas fa-check check"></i> Leitura Rápida</li>
+                        <li style="margin-top: 15px;"><i class="fas fa-times cross"></i> <span class="bold-red">SEM O FINAL DA HISTÓRIA</span></li>
+                        <li><i class="fas fa-times cross"></i> Sem Módulo 5 (A Prisão)</li>
+                        <li><i class="fas fa-times cross"></i> Sem documentos vazados</li>
+                    </ul>
+                </div>
+                <a href="https://pay.kirvano.com/e9bfa0a4-2a23-4f16-a806-ddf2f5dd9281" class="btn-buy btn-basic">QUERO APENAS O BÁSICO</a>
+            </div>
+
+            <div class="card premium">
+                <div class="best-seller">MAIS VENDIDO (78%)</div>
+                <div class="card-header">
+                    <h3>COMBO PREMIUM COMPLETO</h3>
+                    <small>A Verdade Nua e Crua</small>
+                </div>
+                <div class="card-img">
+                    <img src="images/Documentário 2.png" alt="Premium">
+                </div>
+                <div class="price-area">
+                    <span class="old-price">R$ 97,00</span>
+                    <div class="current-price">R$ 22,00</div>
+                    <p class="installments">ou <strong>3x de R$ 7,76</strong></p>
+                </div>
+                <div class="features">
+                    <p style="font-weight: bold; margin-bottom: 10px;">VOCÊ LEVA TUDO:</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle check"></i> <strong>TODOS OS MÓDULOS (1 ao 5)</strong></li>
+                        <li><i class="fas fa-check-circle check"></i> <strong>Módulo 5 Exclusivo:</strong> O Grande Final, A Prisão e o Futuro</li>
+                        <li><i class="fas fa-check-circle check"></i> Documentos Oficiais "Vazados"</li>
+                    </ul>
+                    <div class="premium-features">
+                        <p>🎁 BÔNUS EXCLUSIVOS HOJE:</p>
+                        <ul>
+                            <li>✅ Atualizações Vitalícias</li>
+                            <li>✅ <strong>ACESSO AO GRUPO VIP</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://pay.kirvano.com/7f694891-cee9-4641-8374-a06e448801a5" class="btn-buy btn-premium">QUERO A VERDADE COMPLETA</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="depoimentos" class="testimonials-section">
+        <h2>QUEM LEU, ABRIU OS OLHOS</h2>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="images/whats 1.jpg"></div>
+                <div class="swiper-slide"><img src="images/whats 2.jpg"></div>
+                <div class="swiper-slide"><img src="images/whats 3.jpg"></div>
+                <div class="swiper-slide"><img src="images/whats 4.jpg"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <section class="guarantee-section">
+        <div class="seal">
+            <img src="https://cdn-icons-png.flaticon.com/512/266/266099.png" alt="Selo 7 dias" width="100%">
+        </div>
+        <div class="guarantee-content">
+            <h3>GARANTIA INCONDICIONAL DE 7 DIAS</h3>
+            <p>O risco é todo nosso. Você tem 7 dias para ler o material. Se não ficar satisfeito com as revelações, devolvemos 100% do seu dinheiro via PIX. Sem perguntas.</p>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <h2>DÚVIDAS FREQUENTES</h2>
+        <div class="faq-item">
+            <div class="faq-question">É seguro comprar? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Sim! Utilizamos a Kirvano, plataforma com segurança bancária.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Recebo em casa? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Não. É um produto 100% digital (PDF). Você recebe no e-mail na hora.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Quais as formas de pagamento? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">PIX (imediato), Cartão de Crédito e Boleto.</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Brasil Acima de Tudo © 2025</p>
+        <p><a href="#">Termos de Uso</a> | <a href="#">Privacidade</a></p>
+        <p>Contato: entregrades22@gmail.com</p>
     </footer>
 
     <div id="purchase-popup" class="purchase-popup">
-        <div class="popup-content">
-            <p><strong>Fulano de Tal</strong> de Cidade/UF</p>
-            <span>acabou de comprar <strong>Combo Patriota Completo</strong></span>
-        </div>
+        <p><strong>Ricardo de SP</strong> acabou de comprar <strong>Combo Premium</strong></p>
     </div>
 
-    <a href="https://wa.me/message/O52M473XMG4JI1?text=Ol%C3%A1" target="_blank" class="whatsapp-float" title="Fale conosco pelo WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.8-27.2l-7-4.2-72.5 19 19.3-70.6-4.6-7.4c-18.7-29.9-29.9-65.2-29.9-102.3 0-108.6 88.4-197 197-197s197 88.4 197 197-88.4 197-197 197zm100.3-122.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.8-16.2-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+    <a href="https://wa.me/message/O52M473XMG4JI1" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
     </a>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-
-        // --- LÓGICA DO MENU HAMBÚRGUER ---
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
-        const links = navLinks.querySelectorAll('a');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
-
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
-            });
-        });
-
-        // --- LÓGICA DO CRONÔMETRO DE PROMOÇÃO ---
-        const countdownElement = document.getElementById('countdown-timer');
-        if (countdownElement) {
-            let timeInSeconds = 21 * 60;
-            const timer = setInterval(() => {
-                if (timeInSeconds <= 0) {
-                    clearInterval(timer);
-                    countdownElement.textContent = "00:00";
-                    return;
-                }
-                timeInSeconds--;
-                const minutes = Math.floor(timeInSeconds / 60);
-                const seconds = timeInSeconds % 60;
-                countdownElement.textContent = `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-            }, 1000);
-        }
-
-        // --- LÓGICA DO VÍDEO ---
-        const video = document.getElementById('hero-video');
-        const overlay = document.getElementById('video-overlay');
-        const unmuteButton = document.getElementById('unmute-button');
-
-        if (video && overlay && unmuteButton) {
-            unmuteButton.addEventListener('click', () => {
-                video.muted = false;
-                video.currentTime = 0; // Reinicia o vídeo
-                video.play();
-                overlay.style.display = 'none';
-            });
-        }
-
-        // --- LÓGICA DA GALERIA DE IMAGENS (SLIDER ANTIGO - Mantido para Preview) ---
-        const slidesContainer = document.querySelector('.slides');
-        if (slidesContainer) {
-            const slides = document.querySelectorAll('.slide');
-            const prevBtn = document.querySelector('.prev-btn');
-            const nextBtn = document.querySelector('.next-btn');
-            let currentIndex = 0;
-
-            function updateSlider() {
-                slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-            }
-
-            nextBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % slides.length;
-                updateSlider();
-            });
-
-            prevBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-                updateSlider();
-            });
-
-            setInterval(() => { nextBtn.click(); }, 4000);
-        }
-
-        // --- INICIALIZAÇÃO DO CARROSSEL SWIPER (DEPOIMENTOS) ---
-        var swiper = new Swiper(".mySwiper", {
-            effect: "coverflow",
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: "auto",
-            initialSlide: 1, // Começa no segundo slide para ficar centralizado bonito
-            coverflowEffect: {
-                rotate: 0,
-                stretch: 0,
-                depth: 150,
-                modifier: 1,
-                slideShadows: false,
-            },
-            loop: true,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-        });
-
-        // --- LÓGICA DE ANIMAÇÃO AO ROLAR A PÁGINA ---
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.animated-section').forEach(section => {
-            observer.observe(section);
-        });
-        
-        // --- LÓGICA DO FAQ ACCORDION ---
-        const faqItems = document.querySelectorAll('.faq-item');
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            const answer = item.querySelector('.faq-answer');
-
-            question.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
-                        otherItem.querySelector('.faq-answer').style.maxHeight = null;
-                    }
+        document.addEventListener('DOMContentLoaded', () => {
+            // VÍDEO
+            const video = document.getElementById('hero-video');
+            const overlay = document.getElementById('video-overlay');
+            if (video && overlay) {
+                document.getElementById('unmute-button').addEventListener('click', () => {
+                    video.muted = false; video.currentTime = 0; video.play();
+                    overlay.style.display = 'none'; video.controls = true;
                 });
-
-                if (!isActive) {
-                    item.classList.add('active');
-                    answer.style.maxHeight = answer.scrollHeight + "px";
-                } else {
-                    item.classList.remove('active');
-                    answer.style.maxHeight = null;
-                }
-            });
-        });
-
-
-        // --- LÓGICA DO POP-UP DE COMPRAS ---
-        const popup = document.getElementById('purchase-popup');
-        if(popup) {
-            const popupContent = popup.querySelector('.popup-content');
-            const buyers = [
-                { name: 'José C.', location: 'São Paulo/SP' }, { name: 'Maria S.', location: 'Rio de Janeiro/RJ' },
-                { name: 'Antônio P.', location: 'Porto Alegre/RS' }, { name: 'Fernanda L.', location: 'Goiânia/GO' },
-                { name: 'Lucas M.', location: 'Fortaleza/CE' }, { name: 'Beatriz R.', location: 'Manaus/AM' }
-            ];
-            const ebooks = ['Documentário Essencial', 'Documentário Premium', 'Combo Patriota Completo'];
-            const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
-
-            function showPopup() {
-                const randomBuyer = getRandomItem(buyers);
-                const randomEbook = getRandomItem(ebooks);
-                popupContent.innerHTML = `<p><strong>${randomBuyer.name}</strong> de ${randomBuyer.location}</p><span>acabou de comprar <strong>${randomEbook}</strong></span>`;
-                popup.classList.add('show');
-                setTimeout(() => { popup.classList.remove('show'); }, 5000);
             }
 
-            setTimeout(() => {
-                showPopup();
-                setInterval(showPopup, 20000);
-            }, 5000);
-        }
-        
-        // --- ATUALIZA ANO DO COPYRIGHT ---
-        const yearSpan = document.getElementById('copyright-year');
-        if(yearSpan) {
-            yearSpan.textContent = new Date().getFullYear();
-        }
+            // SLIDER ANTIGO (PREVIEW)
+            const slides = document.querySelectorAll('.slide');
+            const next = document.querySelector('.next-btn');
+            const prev = document.querySelector('.prev-btn');
+            let idx = 0;
+            if(slides.length > 0) {
+                const updateSlide = () => document.querySelector('.slides').style.transform = `translateX(-${idx * 100}%)`;
+                next.addEventListener('click', () => { idx = (idx + 1) % slides.length; updateSlide(); });
+                prev.addEventListener('click', () => { idx = (idx - 1 + slides.length) % slides.length; updateSlide(); });
+            }
 
-    });
+            // SWIPER DEPOIMENTOS
+            new Swiper(".mySwiper", {
+                effect: "coverflow", grabCursor: true, centeredSlides: true, slidesPerView: "auto",
+                coverflowEffect: { rotate: 0, stretch: 0, depth: 100, modifier: 2, slideShadows: false },
+                loop: true, pagination: { el: ".swiper-pagination", clickable: true }
+            });
+
+            // FAQ
+            document.querySelectorAll('.faq-question').forEach(q => {
+                q.addEventListener('click', () => {
+                    q.parentElement.classList.toggle('active');
+                });
+            });
+
+            // TIMER
+            let time = 900;
+            setInterval(() => {
+                if(time <= 0) return;
+                time--;
+                let m = Math.floor(time / 60);
+                let s = time % 60;
+                document.getElementById('countdown-timer').innerText = `${m < 10 ? '0'+m : m}:${s < 10 ? '0'+s : s}`;
+            }, 1000);
+
+            // POPUP
+            const names = ["João de SP", "Maria de RJ", "Carlos de MG", "Ana de RS"];
+            const popup = document.getElementById('purchase-popup');
+            const showPopup = () => {
+                popup.innerHTML = `<p><strong>${names[Math.floor(Math.random()*names.length)]}</strong> comprou <strong>Combo Premium</strong></p>`;
+                popup.classList.add('show');
+                setTimeout(() => popup.classList.remove('show'), 4000);
+            };
+            setTimeout(() => { showPopup(); setInterval(showPopup, 15000); }, 5000);
+        });
     </script>
-    <script
-        src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-        data-utmify-prevent-xcod-sck
-        data-utmify-prevent-subids
-        async
-        defer
-    ></script>
+    <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" async defer></script>
 </body>
 </html>
