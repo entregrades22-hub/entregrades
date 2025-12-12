@@ -1,92 +1,63 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- VÍDEO PLAYER ---
-    const video = document.getElementById('hero-video');
-    const overlay = document.getElementById('video-overlay');
+    // --- LÓGICA DO CARROSSEL 3D ZOOM ---
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    let currentIndex = 0;
 
-    if (video && overlay) {
-        overlay.addEventListener('click', () => {
-            video.muted = false;
-            video.play();
-            overlay.style.display = 'none';
-            video.setAttribute('controls', 'true');
+    function updateCarousel() {
+        // Remove todas as classes especiais primeiro
+        slides.forEach(slide => {
+            slide.classList.remove('active', 'prev', 'next');
+            slide.style.display = 'none'; // Esconde todos para evitar sobreposição errada
         });
+
+        // Índices circulares
+        const totalSlides = slides.length;
+        const prevIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        const nextIndex = (currentIndex + 1) % totalSlides;
+
+        // Configura o slide ATIVO (Centro - Zoom Grande)
+        slides[currentIndex].style.display = 'block';
+        slides[currentIndex].classList.add('active');
+
+        // Configura o slide ANTERIOR (Esquerda - Zoom Pequeno)
+        slides[prevIndex].style.display = 'block';
+        slides[prevIndex].classList.add('prev');
+
+        // Configura o slide PRÓXIMO (Direita - Zoom Pequeno)
+        slides[nextIndex].style.display = 'block';
+        slides[nextIndex].classList.add('next');
     }
 
-    // --- CARROSSEL GENÉRICO ---
-    function setupSlider(sliderId, prevBtnClass, nextBtnClass) {
-        const slider = document.getElementById(sliderId);
-        if (!slider) return;
-        
-        const images = slider.querySelectorAll('img');
-        const prevBtn = document.querySelector(prevBtnClass);
-        const nextBtn = document.querySelector(nextBtnClass);
-        let index = 0;
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel();
+    });
 
-        function showImage(i) {
-            images.forEach(img => img.classList.remove('active'));
-            images[i].classList.add('active');
-        }
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel();
+    });
 
-        nextBtn.addEventListener('click', () => {
-            index++;
-            if (index >= images.length) index = 0;
-            showImage(index);
-        });
+    // Inicializa o carrossel
+    updateCarousel();
 
-        prevBtn.addEventListener('click', () => {
-            index--;
-            if (index < 0) index = images.length - 1;
-            showImage(index);
-        });
-    }
+    // --- LÓGICA DO FAQ (ACCORDION) ---
+    const accordions = document.querySelectorAll('.accordion-header');
 
-    setupSlider('testimonial-slider', '.carousel-nav.prev', '.carousel-nav.next');
-    setupSlider('preview-slider', '.carousel-nav.prev-prev', '.carousel-nav.next-prev');
+    accordions.forEach(acc => {
+        acc.addEventListener('click', function() {
+            const item = this.parentElement;
+            
+            // Fecha outros abertos (opcional, remova se quiser permitir múltiplos abertos)
+            document.querySelectorAll('.accordion-item').forEach(i => {
+                if(i !== item) i.classList.remove('active');
+            });
 
-    // --- FAQ ACCORDION ---
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-        item.querySelector('.faq-header').addEventListener('click', () => {
             item.classList.toggle('active');
         });
     });
-
-    // --- TIMER ---
-    let time = 899; // 14:59
-    const timerEl = document.getElementById('countdown-timer');
-    if(timerEl) {
-        setInterval(() => {
-            let m = Math.floor(time / 60);
-            let s = time % 60;
-            timerEl.innerText = `${m < 10 ? '0'+m : m}:${s < 10 ? '0'+s : s}`;
-            time > 0 ? time-- : 0;
-        }, 1000);
-    }
-
-    // --- POPUP COMPRA ---
-    const popup = document.getElementById('purchase-popup');
-    const popupContent = popup.querySelector('.popup-content');
-    const buyers = [
-        { name: 'Carlos E. de SP', product: 'Combo Premium' },
-        { name: 'Ana P. de RJ', product: 'Combo Premium' },
-        { name: 'Roberto M. de PR', product: 'Combo Premium' },
-        { name: 'Fernanda S. de MG', product: 'Documentário Básico' }
-    ];
-
-    function showPopup() {
-        if(!popup) return;
-        const buyer = buyers[Math.floor(Math.random() * buyers.length)];
-        popupContent.innerHTML = `<p><strong>${buyer.name}</strong> acabou de comprar o <strong>${buyer.product}</strong>.</p>`;
-        popup.classList.add('show');
-        setTimeout(() => {
-            popup.classList.remove('show');
-        }, 5000);
-    }
-
-    setTimeout(() => {
-        showPopup();
-        setInterval(showPopup, 20000);
-    }, 5000);
-
 });
