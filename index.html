@@ -109,7 +109,8 @@
 
         /* --- MANIFESTO / DORES --- */
         .manifesto-section { background-color: var(--verde-patriota); color: #fff; padding: 80px 20px; }
-        .manifesto-section h2 { color: var(--amarelo-principal); text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .manifesto-section h2 { color: var(--amarelo-principal); text-shadow: 0 2px 4px rgba(0,0,0,0.5); margin-bottom: 10px; }
+        .manifesto-subheadline { font-size: 1.3rem; color: #fff; margin-bottom: 40px; font-weight: 300; }
         .manifesto-grid { display: grid; gap: 30px; margin-top: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
         @media (min-width: 768px) { .manifesto-grid { grid-template-columns: repeat(3, 1fr); } }
         .manifesto-item { background: rgba(255, 255, 255, 0.05); padding: 30px 20px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); transition: transform 0.3s; }
@@ -128,7 +129,7 @@
         .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: #fff; border: none; font-size: 2rem; cursor: pointer; padding: 10px; z-index: 10; }
         .prev-btn { left: 10px; } .next-btn { right: 10px; }
 
-        /* --- BENEFÍCIOS (NOVO ESTILO ELEGANTE) --- */
+        /* --- BENEFÍCIOS --- */
         .benefits-section { background: #fff; padding: 80px 20px; }
         .benefits-section h2 { color: var(--azul-principal); margin-bottom: 50px; max-width: 900px; margin-left: auto; margin-right: auto; font-size: 2rem; }
         .benefits-grid { display: grid; gap: 25px; text-align: left; max-width: 1000px; margin: 0 auto; }
@@ -186,8 +187,16 @@
             margin: 0; 
         }
 
+        /* --- NOVO BLOCO: UTILIDADE PRÁTICA --- */
+        .utility-section { background-color: #003079; color: #fff; padding: 70px 20px; }
+        .utility-section h2 { color: var(--amarelo-principal); margin-bottom: 40px; font-size: 2rem; }
+        .utility-content { max-width: 800px; margin: 0 auto; text-align: left; background: rgba(0,0,0,0.2); padding: 40px; border-radius: 15px; border: 1px solid rgba(255,215,0,0.3); }
+        .utility-list { list-style: none; }
+        .utility-list li { font-size: 1.2rem; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px; }
+        .utility-list li i { color: var(--amarelo-principal); margin-top: 5px; font-size: 1.3rem; }
+
         /* --- OFERTA --- */
-        .offer-section { background: linear-gradient(to bottom, #003079, #001f4d); color: #fff; padding-bottom: 80px; }
+        .offer-section { background: linear-gradient(to bottom, #001f4d, #000); color: #fff; padding-bottom: 80px; padding-top: 60px; }
         .offer-section h2 { color: var(--amarelo-principal); }
         .offer-grid { display: flex; flex-direction: column; gap: 30px; align-items: center; margin-top: 40px; }
         @media (min-width: 768px) { .offer-grid { flex-direction: row; justify-content: center; align-items: stretch; } }
@@ -219,13 +228,13 @@
         .check { color: var(--verde-principal); }
         .cross { color: var(--vermelho-alerta); }
         .bold-red { color: var(--vermelho-alerta); font-weight: 700; }
+        .bold-feature { font-weight: 700; color: #003079; }
 
         .premium-features { background: #f0fdf4; border: 1px solid #bbf7d0; padding: 10px; border-radius: 8px; margin-top: 10px; }
         .premium-features p { font-weight: 800; font-size: 0.9rem; color: var(--verde-escuro); margin-bottom: 5px; }
 
         .btn-buy { display: block; padding: 15px; text-align: center; font-weight: 800; text-decoration: none; text-transform: uppercase; border-radius: 0 0 15px 15px; margin-top: auto; font-family: 'Oswald', sans-serif; font-size: 1.2rem; transition: all 0.3s; }
         
-        /* CORREÇÃO 2: BOTÃO BÁSICO PULSANTE AMARELO */
         .btn-basic { 
             background: var(--amarelo-principal); 
             color: #000; 
@@ -236,7 +245,7 @@
         
         .btn-premium { background: var(--verde-principal); color: #fff; box-shadow: 0 -4px 20px rgba(0, 146, 69, 0.4); animation: pulse 2s infinite; }
 
-        /* --- GARANTIA (ESTILO ENIGMAS PATRIOTA) --- */
+        /* --- GARANTIA --- */
         .guarantee-section-dark { background-color: #0d1b2a; padding: 80px 20px; }
         .guarantee-card-dark { background: #001f3f; border: 1px solid var(--amarelo-principal); border-radius: 20px; padding: 50px 30px; max-width: 600px; margin: 0 auto; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
         .guarantee-icon { font-size: 3.5rem; color: var(--amarelo-principal); margin-bottom: 20px; }
@@ -256,6 +265,11 @@
         .swiper-slide { background-position: center; background-size: cover; width: 300px; height: auto; flex-shrink: 0; /* Garante que o slide não encolha */ }
         .swiper-slide img { display: block; width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
+        /* --- FINAL CALL --- */
+        .final-call-section { background: #000; color: #fff; padding: 80px 20px; text-align: center; border-top: 1px solid #333; }
+        .final-call-section h2 { color: var(--branco); font-size: 2.2rem; margin-bottom: 10px; }
+        .final-call-section p { font-size: 1.4rem; color: #888; margin-bottom: 40px; font-family: 'Oswald', sans-serif; }
+        
         /* --- FAQ --- */
         .faq-section { background: #fff; }
         .faq-item { border-bottom: 1px solid #eee; text-align: left; max-width: 800px; margin: 0 auto; }
@@ -320,22 +334,24 @@
     </section>
 
     <section class="manifesto-section">
-        <h2>VOCÊ SENTE QUE TENTAM TE CALAR?</h2>
+        <h2>VOCÊ JÁ PERDEU DISCUSSÃO POR FALTA DE ARGUMENTO?</h2>
+        <p class="manifesto-subheadline">Porque enquanto você repete manchete, eles escondem os fatos.</p>
+        
         <div class="manifesto-grid">
             <div class="manifesto-item">
                 <i class="fas fa-gavel"></i>
-                <h3>A INJUSTIÇA</h3>
-                <p>Perseguição política implacável contra o líder da direita e processos questionáveis.</p>
+                <h3>A INJUSTIÇA QUE NÃO TE CONTAM</h3>
+                <p>Datas, decisões e processos que a mídia corta para sustentar a narrativa.</p>
             </div>
             <div class="manifesto-item">
                 <i class="fas fa-ban"></i>
-                <h3>A CENSURA</h3>
-                <p>Redes sociais bloqueadas e perfis derrubados apenas por expressar opinião.</p>
+                <h3>POR QUE ISSO NÃO PASSA NA TV</h3>
+                <p>Conteúdos removidos, perfis derrubados e o motivo real por trás disso.</p>
             </div>
             <div class="manifesto-item">
                 <i class="fas fa-bullhorn"></i>
-                <h3>A NARRATIVA</h3>
-                <p>A mídia impõe uma única verdade. Nós mostramos o outro lado da moeda.</p>
+                <h3>A MENTIRA REPETIDA MIL VEZES</h3>
+                <p>Como uma versão distorcida virou “verdade oficial” na boca do povo.</p>
             </div>
         </div>
         <p class="manifesto-bottom-text">Eles querem nos calar, mas o conhecimento é a nossa arma. É hora de entender o jogo, fortalecer nossos argumentos e lutar pela verdade.</p>
@@ -399,27 +415,6 @@
                         <p>Versão Premium com conteúdo aprofundado e um pacote completo para quem quer dominar todos os detalhes.</p>
                     </div>
                 </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon-box">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <div class="benefit-text">
-                        <h3>Entrega imediata e garantia</h3>
-                        <p>Acesso instantâneo após a compra e 7 dias para solicitar reembolso, sem burocracia.</p>
-                    </div>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon-box">
-                        <i class="fas fa-flag"></i>
-                    </div>
-                    <div class="benefit-text">
-                        <h3>Apoio à liberdade e à justiça</h3>
-                        <p>Ao adquirir, você se junta a uma causa maior: defender a verdade e a liberdade no Brasil.</p>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -434,6 +429,18 @@
                 <div class="swiper-slide"><img src="images/whats 4.jpg" alt="Depoimento 4"></div>
             </div>
             <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <section class="utility-section">
+        <h2>DEPOIS DISSO, VOCÊ NUNCA MAIS FICA SEM RESPOSTA</h2>
+        <div class="utility-content">
+            <ul class="utility-list">
+                <li><i class="fas fa-check-circle"></i> O que responder quando chamam Bolsonaro de criminoso</li>
+                <li><i class="fas fa-check-circle"></i> Os fatos que a mídia omite deliberadamente</li>
+                <li><i class="fas fa-check-circle"></i> As datas e decisões que desmontam a narrativa</li>
+                <li><i class="fas fa-check-circle"></i> Os documentos que ninguém mostra em debate nenhum</li>
+            </ul>
         </div>
     </section>
 
@@ -460,7 +467,7 @@
                         <li><i class="fas fa-check check"></i> Módulo 1: Origem e Formação</li>
                         <li><i class="fas fa-check check"></i> Módulo 2: Ascensão Política</li>
                         <li><i class="fas fa-check check"></i> Leitura Rápida</li>
-                        <li style="margin-top: 15px;"><i class="fas fa-times cross"></i> <span class="bold-red">SEM O FINAL DA HISTÓRIA</span></li>
+                        <li style="margin-top: 15px;"><i class="fas fa-times cross"></i> <span class="bold-red">❌ Você fica sem entender a prisão</span></li>
                         <li><i class="fas fa-times cross"></i> Sem Módulo 5 (A Prisão)</li>
                         <li><i class="fas fa-times cross"></i> Sem documentos vazados</li>
                     </ul>
@@ -486,8 +493,8 @@
                     <p style="font-weight: bold; margin-bottom: 10px;">VOCÊ LEVA TUDO:</p>
                     <ul>
                         <li><i class="fas fa-check-circle check"></i> <strong>TODOS OS MÓDULOS (1 ao 5)</strong></li>
-                        <li><i class="fas fa-check-circle check"></i> <strong>Módulo 5 Exclusivo:</strong> O Grande Final, A Prisão e o Futuro</li>
-                        <li><i class="fas fa-check-circle check"></i> Documentos Oficiais "Vazados"</li>
+                        <li><i class="fas fa-check-circle check"></i> <span class="bold-feature">✔️ A PRISÃO EXPLICADA PASSO A PASSO</span></li>
+                        <li><i class="fas fa-check-circle check"></i> <span class="bold-feature">✔️ DOCUMENTOS QUE NÃO ESTÃO NA INTERNET</span></li>
                     </ul>
                     <div class="premium-features">
                         <p>🎁 BÔNUS EXCLUSIVOS HOJE:</p>
@@ -508,12 +515,12 @@
             <div class="guarantee-icon"><i class="fas fa-shield-alt"></i></div>
             <h2>GARANTIA "RISCO ZERO" — 7 DIAS</h2>
             <h3>VOCÊ SÓ PAGA SE ABRIR SEUS OLHOS.</h3>
-            <p>Você baixa o material agora, lê tudo hoje. Se achar que não valeu a pena, se não sentir a revolta e a verdade voltando, eu devolvo 100% do seu dinheiro.</p>
+            <p>Leia tudo hoje. Se você não sentir <strong>indignação, revolta ou clareza</strong> — eu devolvo cada centavo.</p>
             <p class="guarantee-small">Sem formulário. Sem pergunta. Sem burocracia.</p>
             
             <ul class="guarantee-check">
                 <li><i class="fas fa-check"></i> Baixou o dossiê?</li>
-                <li><i class="fas fa-check"></i> Não gostou?</li>
+                <li><i class="fas fa-check"></i> Não sentiu revolta?</li>
                 <li><i class="fas fa-check"></i> Eu devolvo seu dinheiro</li>
             </ul>
 
@@ -539,6 +546,12 @@
             <div class="faq-question">Terei acesso a atualizações? <i class="fas fa-chevron-down"></i></div>
             <div class="faq-answer">Sim! No pacote Premium, você recebe todas as atualizações futuras gratuitamente.</div>
         </div>
+    </section>
+
+    <section class="final-call-section">
+        <h2>QUEM CONTROLA A NARRATIVA, CONTROLA O POVO.</h2>
+        <p>Esse material é para quem decidiu não ser controlado.</p>
+        <a href="#oferta" class="cta-button">QUERO ENTENDER ANTES QUE APAGUEM</a>
     </section>
 
     <footer>
