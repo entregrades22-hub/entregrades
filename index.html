@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -46,8 +46,8 @@
             --verde-principal: #009245;
             --verde-escuro: #006b28;
             --verde-patriota: #003b15;
-            --amarelo-principal: #FFD700; /* Amarelo Ouro */
-            --amarelo-escuro: #b89c00;
+            --amarelo-principal: #FFD700; 
+            --amarelo-vibrante: #ffe600; /* Mais vivo para o botão */
             --azul-principal: #003079;
             --branco: #ffffff;
             --cinza-claro: #f8f9fa;
@@ -68,23 +68,18 @@
         .header { background-color: #fff; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: relative; z-index: 999; }
         .nav-container { 
             display: flex; 
-            justify-content: center; /* Centraliza no mobile */
+            justify-content: center; 
             align-items: center; 
             max-width: 1200px; 
             margin: 0 auto; 
             padding: 0 20px; 
-            position: relative; /* Necessário para centralizar absolutamente no desktop */
+            position: relative; 
         }
         .logo { font-family: 'Oswald', sans-serif; font-size: 1.5rem; color: var(--azul-principal); text-decoration: none; font-weight: bold; text-align: center; }
-
         .nav-links { display: none; } 
         @media (min-width: 768px) {
-            .nav-container { justify-content: flex-end; /* Joga os links para a direita no desktop */ }
-            .logo { 
-                position: absolute; /* Tira do fluxo normal */
-                left: 50%; /* Move para o meio */
-                transform: translateX(-50%); /* Centraliza perfeitamente */
-            }
+            .nav-container { justify-content: flex-end; }
+            .logo { position: absolute; left: 50%; transform: translateX(-50%); }
             .nav-links { display: flex; gap: 20px; list-style: none; }
             .nav-links a { text-decoration: none; color: #333; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; }
             .nav-links a:hover { color: var(--verde-principal); }
@@ -103,7 +98,7 @@
         #video-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 2; }
         #unmute-button { background: var(--verde-principal); color: #fff; border: none; padding: 15px 30px; font-size: 1.2rem; font-weight: bold; border-radius: 50px; cursor: pointer; animation: pulse 2s infinite; display: flex; align-items: center; gap: 10px; }
 
-        /* CTA BUTTON GERAL (ESTILO 3D) */
+        /* CTA BUTTON GERAL */
         .cta-button { 
             display: inline-block; 
             background: linear-gradient(180deg, #ffdf00 0%, #ffd700 100%); 
@@ -114,7 +109,7 @@
             font-weight: 800; 
             font-size: 1.3rem; 
             text-transform: uppercase; 
-            border-bottom: 5px solid #b8860b; /* Efeito 3D */
+            border-bottom: 5px solid #b8860b; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
             transition: all 0.1s; 
             font-family: 'Oswald', sans-serif; 
@@ -122,17 +117,10 @@
             max-width: 400px; 
             cursor: pointer;
         }
-        .cta-button:hover { 
-            transform: translateY(-2px); 
-            filter: brightness(1.1); 
-        }
-        .cta-button:active { 
-            transform: translateY(4px); /* Afunda ao clicar */
-            border-bottom-width: 0; 
-            box-shadow: none;
-        }
+        .cta-button:hover { transform: translateY(-2px); filter: brightness(1.1); }
+        .cta-button:active { transform: translateY(4px); border-bottom-width: 0; box-shadow: none; }
 
-        /* --- MANIFESTO / DORES --- */
+        /* --- MANIFESTO --- */
         .manifesto-section { background-color: var(--verde-patriota); color: #fff; padding: 80px 20px; }
         .manifesto-section h2 { color: var(--amarelo-principal); text-shadow: 0 2px 4px rgba(0,0,0,0.5); margin-bottom: 10px; }
         .manifesto-subheadline { font-size: 1.3rem; color: #fff; margin-bottom: 40px; font-weight: 300; }
@@ -154,21 +142,15 @@
         .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: #fff; border: none; font-size: 2rem; cursor: pointer; padding: 10px; z-index: 10; }
         .prev-btn { left: 10px; } .next-btn { right: 10px; }
 
-        /* --- ESTILO PARA BOTÕES INTERMEDIÁRIOS --- */
-        .intermediate-cta-container {
-            margin-top: 40px;
-            text-align: center;
-        }
+        /* BOTÕES INTERMEDIÁRIOS */
+        .intermediate-cta-container { margin-top: 40px; text-align: center; }
         .btn-green-pulse {
             background: linear-gradient(180deg, #009245 0%, #007a3a 100%);
             color: white;
             border-bottom: 5px solid #005226;
             animation: pulse-green 2s infinite;
         }
-        .btn-green-pulse:hover {
-            background: linear-gradient(180deg, #00a850 0%, #009245 100%);
-            color: #fff;
-        }
+        .btn-green-pulse:hover { background: linear-gradient(180deg, #00a850 0%, #009245 100%); color: #fff; }
         @keyframes pulse-green {
             0% { box-shadow: 0 0 0 0 rgba(0, 146, 69, 0.7); }
             70% { box-shadow: 0 0 0 15px rgba(0, 146, 69, 0); }
@@ -181,44 +163,14 @@
         .benefits-grid { display: grid; gap: 25px; text-align: left; max-width: 1000px; margin: 0 auto; }
         @media (min-width: 768px) { .benefits-grid { grid-template-columns: 1fr 1fr; } }
         
-        .benefit-card { 
-            display: flex; 
-            align-items: center; /* Centraliza verticalmente */
-            gap: 20px; 
-            padding: 25px; 
-            background: #ffffff; 
-            border-radius: 12px; 
-            border: 1px solid #e0e0e0;
-            border-left: 5px solid var(--verde-principal); 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .benefit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 146, 69, 0.1);
-        }
-
-        .benefit-icon-box { 
-            width: 60px;
-            height: 60px;
-            min-width: 60px; 
-            background-color: rgba(0, 146, 69, 0.1); 
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .benefit-icon-box i {
-            color: var(--verde-principal);
-            font-size: 1.5rem;
-        }
-
-        .benefit-text h3 { margin: 0 0 8px; font-size: 1.15rem; color: var(--azul-principal); font-family: 'Roboto', sans-serif; font-weight: 700; text-transform: none; letter-spacing: 0; }
+        .benefit-card { display: flex; align-items: center; gap: 20px; padding: 25px; background: #ffffff; border-radius: 12px; border: 1px solid #e0e0e0; border-left: 5px solid var(--verde-principal); box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .benefit-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 146, 69, 0.1); }
+        .benefit-icon-box { width: 60px; height: 60px; min-width: 60px; background-color: rgba(0, 146, 69, 0.1); border-radius: 50%; display: flex; justify-content: center; align-items: center; }
+        .benefit-icon-box i { color: var(--verde-principal); font-size: 1.5rem; }
+        .benefit-text h3 { margin: 0 0 8px; font-size: 1.15rem; color: var(--azul-principal); font-family: 'Roboto', sans-serif; font-weight: 700; }
         .benefit-text p { font-size: 0.95rem; color: #555; line-height: 1.5; margin: 0; }
 
-        /* --- UTILITY PRÁTICA --- */
+        /* --- UTILITY --- */
         .utility-section { background-color: #003079; color: #fff; padding: 70px 20px; }
         .utility-section h2 { color: var(--amarelo-principal); margin-bottom: 40px; font-size: 2rem; }
         .utility-content { max-width: 800px; margin: 0 auto; text-align: left; background: rgba(0,0,0,0.2); padding: 40px; border-radius: 15px; border: 1px solid rgba(255,215,0,0.3); }
@@ -226,30 +178,25 @@
         .utility-list li { font-size: 1.2rem; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px; }
         .utility-list li i { color: var(--amarelo-principal); margin-top: 5px; font-size: 1.3rem; }
 
-        /* --- OFERTA (Melhoria nos botões) --- */
+        /* --- OFERTA (Seção Ajustada) --- */
         .offer-section { background: linear-gradient(to bottom, #001f4d, #000); color: #fff; padding-bottom: 80px; padding-top: 60px; }
         .offer-section h2 { color: var(--amarelo-principal); }
         .offer-grid { display: flex; flex-direction: column; gap: 30px; align-items: center; margin-top: 40px; }
         @media (min-width: 768px) { .offer-grid { flex-direction: row; justify-content: center; align-items: stretch; } }
 
         .card { background: #fff; color: #333; border-radius: 15px; width: 100%; max-width: 380px; overflow: hidden; position: relative; display: flex; flex-direction: column; }
-
         .card.basic { border: 2px solid #e0e0e0; }
         .card.basic .card-header { background: #f0f0f0; padding: 15px; color: #555; }
-
         .card.premium { border: 4px solid var(--amarelo-principal); transform: scale(1.02); box-shadow: 0 0 30px rgba(255, 215, 0, 0.3); z-index: 10; }
         .best-seller { position: absolute; top: 0; left: 0; width: 100%; background: var(--amarelo-principal); color: #000; font-weight: 800; padding: 5px; font-size: 0.8rem; text-transform: uppercase; }
         .card.premium .card-header { background: #003079; color: #fff; padding: 30px 15px 15px; }
-
         .card-img { padding: 20px; background: #fff; text-align: center; }
         .card-img img { max-width: 150px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-
         .price-area { padding: 10px; text-align: center; }
         .old-price { text-decoration: line-through; color: #999; font-size: 0.9rem; }
         .current-price { font-size: 2.5rem; font-weight: 800; color: #333; line-height: 1; }
         .installments { font-size: 0.9rem; color: #666; margin-top: 5px; }
         .card.premium .current-price { color: var(--verde-principal); }
-
         .features { padding: 20px; text-align: left; flex-grow: 1; }
         .features ul { list-style: none; padding: 0; }
         .features li { margin-bottom: 10px; font-size: 0.95rem; border-bottom: 1px solid #eee; padding-bottom: 5px; display: flex; gap: 8px; }
@@ -258,48 +205,72 @@
         .cross { color: var(--vermelho-alerta); }
         .bold-red { color: var(--vermelho-alerta); font-weight: 700; }
         .bold-feature { font-weight: 700; color: #003079; }
-
         .premium-features { background: #f0fdf4; border: 1px solid #bbf7d0; padding: 10px; border-radius: 8px; margin-top: 10px; }
         .premium-features p { font-weight: 800; font-size: 0.9rem; color: var(--verde-escuro); margin-bottom: 5px; }
 
-        /* ESTILO NOVO DOS BOTÕES DE COMPRA */
+        /* 🔥 NOVOS ESTILOS DOS BOTÕES (CORRIGIDOS) 🔥 */
         .btn-buy { 
             display: block; 
-            padding: 18px; 
             text-align: center; 
             font-weight: 800; 
             text-decoration: none; 
             text-transform: uppercase; 
             border-radius: 8px; 
-            margin: 20px; 
+            margin: 20px 20px 10px 20px; /* Margem ajustada */
             font-family: 'Oswald', sans-serif; 
             font-size: 1.1rem; 
-            transition: all 0.1s;
+            transition: all 0.2s ease;
             position: relative;
-            cursor: pointer; /* Garante que pareça clicável */
+            cursor: pointer;
+            letter-spacing: 0.5px;
         }
-        .btn-buy:active {
-            transform: translateY(4px);
-            border-bottom-width: 0px !important;
-            margin-bottom: 24px; /* Compensa a perda da borda */
-        }
-        
+
+        /* Botão Básico (Amarelo Vibrante + Ícone) */
         .btn-basic { 
-            background: linear-gradient(180deg, #FFD700 0%, #e6c200 100%);
+            background: linear-gradient(180deg, #FFD700 0%, #FDB931 100%);
             color: #000; 
-            border-bottom: 4px solid #b89c00; /* Borda 3D */
+            padding: 16px;
+            border-bottom: 4px solid #b8860b;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        .btn-basic:hover { background: #ffeb3b; }
+        .btn-basic:hover { 
+            background: #ffe600; 
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(255, 230, 0, 0.4); /* Leve brilho */
+        }
+        .btn-basic:active { transform: translateY(4px); border-bottom-width: 0; margin-bottom: 14px; }
         
+        /* Botão Premium (O Matador: Maior, Mais Forte, Glow) */
         .btn-premium { 
-            background: linear-gradient(180deg, #009245 0%, #007a3a 100%);
+            background: linear-gradient(180deg, #009245 0%, #006b28 100%);
             color: #fff; 
-            border-bottom: 4px solid #005226; /* Borda 3D */
-            box-shadow: 0 4px 15px rgba(0, 146, 69, 0.3); 
+            padding: 22px; /* Maior área de clique */
+            font-size: 1.25rem; /* Texto maior */
+            border-bottom: 5px solid #004d1a; 
+            box-shadow: 0 5px 20px rgba(0, 146, 69, 0.5); /* Sombra forte */
             animation: pulse-green 2s infinite;
         }
-        .btn-premium:hover { filter: brightness(1.1); color: #fff; }
+        .btn-premium:hover { 
+            filter: brightness(1.1); 
+            transform: translateY(-3px) scale(1.02); /* Cresce levemente */
+            box-shadow: 0 0 25px rgba(0, 255, 100, 0.6); /* Glow intenso */
+        }
+        .btn-premium:active { transform: translateY(4px) scale(1.02); border-bottom-width: 0; margin-bottom: 15px; }
+
+        /* MICROTEXTO DE SEGURANÇA (Abaixo do botão premium) */
+        .micro-text {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: 0.75rem;
+            color: #555;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .micro-text span { display: flex; align-items: center; gap: 3px; }
+        .micro-text i { color: var(--verde-principal); }
+
 
         /* --- GARANTIA --- */
         .guarantee-section-dark { background-color: #0d1b2a; padding: 80px 20px; }
@@ -312,59 +283,30 @@
         .guarantee-check { list-style: none; padding: 0; margin: 0 auto 30px; display: inline-block; text-align: left; }
         .guarantee-check li { color: #fff; font-size: 1rem; margin-bottom: 8px; }
         .guarantee-check li i { color: var(--amarelo-principal); margin-right: 10px; }
-        
-        .btn-guarantee-gold { 
-            display: block; 
-            width: 100%; 
-            background: linear-gradient(180deg, #FFD700 0%, #e6c200 100%); 
-            color: #001f3f; 
-            padding: 18px; 
-            border-radius: 8px; 
-            font-weight: 800; 
-            text-decoration: none; 
-            text-transform: uppercase; 
-            font-family: 'Oswald', sans-serif; 
-            font-size: 1.1rem; 
-            border-bottom: 4px solid #b89c00;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3); 
-            transition: all 0.1s; 
-        }
+        .btn-guarantee-gold { display: block; width: 100%; background: linear-gradient(180deg, #FFD700 0%, #e6c200 100%); color: #001f3f; padding: 18px; border-radius: 8px; font-weight: 800; text-decoration: none; text-transform: uppercase; font-family: 'Oswald', sans-serif; font-size: 1.1rem; border-bottom: 4px solid #b89c00; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3); transition: all 0.1s; }
         .btn-guarantee-gold:active { transform: translateY(4px); border-bottom-width: 0; }
 
-        /* --- DEPOIMENTOS (Swiper) --- */
-        .testimonials-section { background: #f9f9f9; padding-left: 0; padding-right: 0; }
+        /* --- OUTROS --- */
+        .testimonials-section { background: #f9f9f9; padding: 0 0 50px 0; }
         .swiper { width: 100%; padding-top: 20px; padding-bottom: 50px; }
         .swiper-slide { background-position: center; background-size: cover; width: 300px; height: auto; flex-shrink: 0; }
         .swiper-slide img { display: block; width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-
-        /* --- FINAL CALL --- */
         .final-call-section { background: #000; color: #fff; padding: 80px 20px; text-align: center; border-top: 1px solid #333; }
         .final-call-section h2 { color: var(--branco); font-size: 2.2rem; margin-bottom: 10px; }
         .final-call-section p { font-size: 1.4rem; color: #888; margin-bottom: 40px; font-family: 'Oswald', sans-serif; }
-        
-        /* --- FAQ --- */
         .faq-section { background: #fff; }
         .faq-item { border-bottom: 1px solid #eee; text-align: left; max-width: 800px; margin: 0 auto; }
         .faq-question { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
         .faq-answer { max-height: 0; overflow: hidden; transition: 0.3s; padding: 0 20px; color: #555; }
         .faq-item.active .faq-answer { padding-bottom: 20px; max-height: 200px; }
         .faq-item.active .faq-question { color: var(--verde-principal); }
-
-        /* --- FOOTER --- */
         footer { background: #222; color: #aaa; padding: 40px 20px; font-size: 0.9rem; }
         footer a { color: #fff; text-decoration: none; }
-
-        /* --- UTILS --- */
         .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 9999; }
-
         .purchase-popup { position: fixed; bottom: 20px; left: 20px; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); z-index: 9998; border-left: 5px solid var(--verde-principal); display: none; max-width: 300px; text-align: left; font-size: 0.85rem; }
         .purchase-popup.show { display: block; animation: slideIn 0.5s ease; }
         @keyframes slideIn { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
-        @media (max-width: 480px) {
-            h1 { font-size: 1.8rem; }
-            .offer-grid { gap: 40px; }
-        }
+        @media (max-width: 480px) { h1 { font-size: 1.8rem; } .offer-grid { gap: 40px; } }
     </style>
 </head>
 <body>
@@ -444,7 +386,6 @@
         <div class="intermediate-cta-container">
             <a href="#oferta" class="cta-button btn-green-pulse">QUERO LER O DOSSIÊ COMPLETO</a>
         </div>
-
     </section>
 
     <section class="benefits-section">
@@ -552,7 +493,7 @@
                         <li><i class="fas fa-times cross"></i> Sem documentos vazados</li>
                     </ul>
                 </div>
-                <a href="https://pay.kirvano.com/585f6eea-d292-41be-8369-ad080b22fd56" class="btn-buy btn-basic">QUERO APENAS O BÁSICO</a>
+                <a href="https://pay.kirvano.com/585f6eea-d292-41be-8369-ad080b22fd56" class="btn-buy btn-basic">🔓 QUERO ACESSAR AGORA</a>
             </div>
 
             <div class="card premium">
@@ -584,7 +525,15 @@
                         </ul>
                     </div>
                 </div>
-                <a href="https://pay.kirvano.com/7de47f89-b1f6-4cd5-8212-71d7846c868b" class="btn-buy btn-premium">QUERO A VERDADE COMPLETA</a>
+                <a href="https://pay.kirvano.com/7de47f89-b1f6-4cd5-8212-71d7846c868b" class="btn-buy btn-premium">🔥 QUERO A VERDADE QUE ESCONDEM</a>
+                
+                <div class="micro-text">
+                    <span><i class="fas fa-check-circle"></i> Acesso imediato</span>
+                    <span>•</span>
+                    <span><i class="fas fa-shield-alt"></i> Garantia de 7 dias</span>
+                    <span>•</span>
+                    <span><i class="fas fa-lock"></i> Compra Segura</span>
+                </div>
             </div>
 
         </div>
@@ -655,7 +604,6 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // VÍDEO
             const video = document.getElementById('hero-video');
             const overlay = document.getElementById('video-overlay');
             if (video && overlay) {
@@ -665,7 +613,6 @@
                 });
             }
 
-            // SLIDER ANTIGO (PREVIEW)
             const slides = document.querySelectorAll('.slide');
             const next = document.querySelector('.next-btn');
             const prev = document.querySelector('.prev-btn');
@@ -676,21 +623,18 @@
                 prev.addEventListener('click', () => { idx = (idx - 1 + slides.length) % slides.length; updateSlide(); });
             }
 
-            // SWIPER DEPOIMENTOS
             new Swiper(".mySwiper", {
                 effect: "coverflow", grabCursor: true, centeredSlides: true, slidesPerView: "auto",
                 coverflowEffect: { rotate: 0, stretch: 0, depth: 100, modifier: 2, slideShadows: false },
                 loop: true, pagination: { el: ".swiper-pagination", clickable: true }
             });
 
-            // FAQ
             document.querySelectorAll('.faq-question').forEach(q => {
                 q.addEventListener('click', () => {
                     q.parentElement.classList.toggle('active');
                 });
             });
 
-            // TIMER
             let time = 900;
             setInterval(() => {
                 if(time <= 0) return;
@@ -700,7 +644,6 @@
                 document.getElementById('countdown-timer').innerText = `${m < 10 ? '0'+m : m}:${s < 10 ? '0'+s : s}`;
             }, 1000);
 
-            // POPUP
             const names = ["João de SP", "Maria de RJ", "Carlos de MG", "Ana de RS"];
             const popup = document.getElementById('purchase-popup');
             const showPopup = () => {
