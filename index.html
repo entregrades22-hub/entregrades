@@ -345,7 +345,7 @@
                 </div>
             </div>
 
-            <a href="#oferta" class="cta-button">VER O CONTEÚDO DO DOCUMENTÁRIO</a>
+            <a href="#oferta" class="cta-button">QUERO VER OS DOCUMENTOS</a>
         </div>
     </section>
 
@@ -390,7 +390,7 @@
         </div>
 
         <div class="intermediate-cta-container">
-            <a href="#oferta" class="cta-button btn-green-pulse">VER O DOCUMENTÁRIO COMPLETO</a>
+            <a href="#oferta" class="cta-button btn-green-pulse">QUERO LER O DOSSIÊ COMPLETO</a>
         </div>
     </section>
 
@@ -442,7 +442,7 @@
         </div>
 
         <div class="intermediate-cta-container">
-            <a href="#oferta" class="cta-button btn-green-pulse">ACESSAR OS PLANOS DISPONÍVEIS</a>
+            <a href="#oferta" class="cta-button btn-green-pulse">VER PREÇOS E PLANOS AGORA</a>
         </div>
     </section>
 
@@ -494,12 +494,12 @@
                         <li><i class="fas fa-check check"></i> Módulo 1: Origem e Formação</li>
                         <li><i class="fas fa-check check"></i> Módulo 2: Ascensão Política</li>
                         <li><i class="fas fa-check check"></i> Leitura Rápida</li>
-                        <li style="margin-top: 15px;"><i class="fas fa-times cross"></i> <span class="bold-red"> Você fica sem entender a prisão</span></li>
+                        <li style="margin-top: 15px;"><i class="fas fa-times cross"></i> <span class="bold-red">❌ Você fica sem entender a prisão</span></li>
                         <li><i class="fas fa-times cross"></i> Sem Módulo 5 (A Prisão)</li>
                         <li><i class="fas fa-times cross"></i> Sem documentos vazados</li>
                     </ul>
                 </div>
-                <a href="https://pay.kirvano.com/585f6eea-d292-41be-8369-ad080b22fd56" class="btn-buy btn-basic">ACESSAR CONTEÚDO BÁSICO</a>
+                <a href="https://pay.kirvano.com/585f6eea-d292-41be-8369-ad080b22fd56" class="btn-buy btn-basic">🔓 QUERO ACESSAR AGORA</a>
             </div>
 
             <div class="card premium">
@@ -520,8 +520,8 @@
                     <p style="font-weight: bold; margin-bottom: 10px;">VOCÊ LEVA TUDO:</p>
                     <ul>
                         <li><i class="fas fa-check-circle check"></i> <strong>TODOS OS MÓDULOS (1 ao 5)</strong></li>
-                        <li><i class="fas fa-check-circle check"></i> <span class="bold-feature"> A PRISÃO EXPLICADA PASSO A PASSO</span></li>
-                        <li><i class="fas fa-check-circle check"></i> <span class="bold-feature"> DOCUMENTOS QUE NÃO ESTÃO NA INTERNET</span></li>
+                        <li><i class="fas fa-check-circle check"></i> <span class="bold-feature">✔️ A PRISÃO EXPLICADA PASSO A PASSO</span></li>
+                        <li><i class="fas fa-check-circle check"></i> <span class="bold-feature">✔️ DOCUMENTOS QUE NÃO ESTÃO NA INTERNET</span></li>
                     </ul>
                     <div class="premium-features">
                         <p>🎁 BÔNUS EXCLUSIVOS HOJE:</p>
@@ -531,7 +531,7 @@
                         </ul>
                     </div>
                 </div>
-                <a href="https://pay.kirvano.com/7de47f89-b1f6-4cd5-8212-71d7846c868b" class="btn-buy btn-premium">ACESSAR DOCUMENTÁRIO COMPLETO</a>
+                <a href="https://pay.kirvano.com/7de47f89-b1f6-4cd5-8212-71d7846c868b" class="btn-buy btn-premium">🔥 QUERO A VERDADE QUE ESCONDEM</a>
                 
                 <div class="micro-text">
                     <span><i class="fas fa-check-circle"></i> Acesso imediato</span>
@@ -554,7 +554,7 @@
             <p class="guarantee-small">Sem formulário. Sem pergunta. Sem burocracia.</p>
             
             <ul class="guarantee-check">
-                <li><i class="fas fa-check"></i> Baixou o documentário?</li>
+                <li><i class="fas fa-check"></i> Baixou o dossiê?</li>
                 <li><i class="fas fa-check"></i> Não sentiu revolta?</li>
                 <li><i class="fas fa-check"></i> Eu devolvo seu dinheiro</li>
             </ul>
@@ -586,7 +586,7 @@
     <section class="final-call-section">
         <h2>QUEM CONTROLA A NARRATIVA, CONTROLA O POVO.</h2>
         <p>Esse material é para quem decidiu não ser controlado.</p>
-        <a href="#oferta" class="cta-button">VER DOCUMENTÁRIO ANTES QUE SEJA REMOVIDO</a>
+        <a href="#oferta" class="cta-button">QUERO ENTENDER ANTES QUE APAGUEM</a>
     </section>
 
     <footer>
@@ -657,6 +657,19 @@
         });
     </script>
     <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" async defer></script>
+
+    <script>
+        (function() {
+            // Cria um estado no histórico para "segurar" a pessoa
+            window.history.pushState(null, "", window.location.href);
+            
+            // Quando a pessoa clica em voltar
+            window.onpopstate = function() {
+                // Redireciona para a página de desconto
+                window.location.href = "desconto.html";
+            };
+        })();
+    </script>
 </body>
 </html>
 
