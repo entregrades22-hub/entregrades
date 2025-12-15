@@ -1,1 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oportunidade Única - Desconto Liberado</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script
+        src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+        data-utmify-prevent-xcod-sck
+        data-utmify-prevent-subids
+        async
+        defer
+    ></script>
+
+    <style>
+        /* --- ESTILO DE EMERGÊNCIA/OPORTUNIDADE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            background-color: #0d1b2a; /* Fundo Escuro para contraste */
+            color: #fff; 
+            text-align: center; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #1b263b;
+            border: 2px solid #FFD700;
+            border-radius: 15px;
+            padding: 40px 20px;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.2);
+            position: relative;
+        }
+
+        .alert-icon {
+            font-size: 3rem;
+            color: #FFD700;
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            line-height: 1.2;
+            color: #fff;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .subheadline {
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .offer-box {
+            background: #fff;
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .offer-box ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 20px;
+            padding-left: 10px;
+        }
+
+        .offer-box li {
+            margin-bottom: 8px;
+            font-weight: 500;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .offer-box i { color: #009245; margin-top: 4px; }
+
+        .price-container {
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .old-price {
+            font-size: 1rem;
+            color: #888;
+            text-decoration: line-through;
+        }
+
+        .new-price {
+            font-size: 3rem;
+            color: #009245;
+            font-weight: 800;
+            font-family: 'Oswald', sans-serif;
+            line-height: 1;
+        }
+
+        .payment-info {
+            font-size: 0.9rem;
+            color: #555;
+            font-weight: bold;
+        }
+
+        .warning-text {
+            color: #dc3545;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            font-weight: 700;
+        }
+
+        /* BOTÃO */
+        .btn-desconto {
+            display: block;
+            width: 100%;
+            background: linear-gradient(180deg, #009245 0%, #006b28 100%);
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            font-family: 'Oswald', sans-serif;
+            border-bottom: 5px solid #004d1a;
+            box-shadow: 0 5px 20px rgba(0, 146, 69, 0.4);
+            animation: pulse-green 2s infinite;
+            margin-bottom: 15px;
+        }
+        .btn-desconto:hover { filter: brightness(1.1); transform: translateY(-2px); }
+        .btn-desconto:active { transform: translateY(4px); border-bottom: 0; }
+
+        .micro-security {
+            font-size: 0.8rem;
+            color: #aaa;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .micro-security i { color: #FFD700; }
+
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(0, 146, 69, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 146, 69, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 146, 69, 0); } }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="alert-icon"><i class="fas fa-exclamation-circle"></i></div>
+        
+        <h1>ANTES DE SAIR, CONSEGUIMOS LIBERAR UM DESCONTO MAIOR PRA VOCÊ.</h1>
+        
+        <p class="subheadline">
+            O Documentário Premium estava por R$ 22,00. <br>
+            <strong>Antes de você sair, conseguimos reduzir ainda mais para apenas R$ 12,00.</strong>
+        </p>
+
+        <div class="offer-box">
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Todos os módulos (1 ao 5)</li>
+                <li><i class="fas fa-check-circle"></i> A prisão explicada passo a passo</li>
+                <li><i class="fas fa-check-circle"></i> Documentos que não aparecem na mídia</li>
+            </ul>
+
+            <div class="price-container">
+                <span class="old-price">De R$ 22,00</span>
+                <div class="new-price">R$ 12,00</div>
+                <p class="payment-info">À vista no PIX</p>
+                <p class="warning-text">⚠️ Desconto liberado apenas nesta página.</p>
+            </div>
+        </div>
+
+        <a href="https://pay.kirvano.com/2a70b501-84c8-4ac7-9827-c64a4fa5c851" class="btn-desconto">
+            QUERO O PREMIUM POR R$ 12 AGORA
+        </a>
+
+        <div class="micro-security">
+            <span><i class="fas fa-lock"></i> Acesso imediato</span>
+            <span>•</span>
+            <span><i class="fas fa-shield-alt"></i> Garantia de 7 dias</span>
+            <span>•</span>
+            <span><i class="fas fa-check"></i> Compra segura</span>
+        </div>
+    </div>
+
+    <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" async defer></script>
+</body>
+  </html>
 
