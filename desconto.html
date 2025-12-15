@@ -34,88 +34,102 @@
         }
 
         .container {
-            max-width: 600px;
+            max-width: 500px; /* Levemente menor para garantir que caiba na tela */
             margin: 0 auto;
             background: #1b263b;
             border: 2px solid #FFD700;
             border-radius: 15px;
-            padding: 40px 20px;
+            padding: 30px 20px;
             box-shadow: 0 0 50px rgba(255, 215, 0, 0.2);
             position: relative;
         }
 
+        /* AJUSTE 1: ÍCONE DE CADEADO ABERTO (OPORTUNIDADE) */
         .alert-icon {
             font-size: 3rem;
             color: #FFD700;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             animation: pulse 1.5s infinite;
         }
 
         h1 {
             font-family: 'Oswald', sans-serif;
-            font-size: 2rem;
+            font-size: 1.8rem;
             line-height: 1.2;
             color: #fff;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             text-transform: uppercase;
         }
 
         .subheadline {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #e0e0e0;
-            margin-bottom: 30px;
-            line-height: 1.5;
+            margin-bottom: 20px;
+            line-height: 1.4;
         }
 
         .offer-box {
             background: #fff;
             color: #333;
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+        }
+
+        /* IMAGEM DO PRODUTO */
+        .product-img {
+            max-width: 120px; /* Pequena para não ocupar muito espaço */
+            margin-bottom: 15px;
+            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2));
         }
 
         .offer-box ul {
             list-style: none;
             text-align: left;
-            margin-bottom: 20px;
-            padding-left: 10px;
+            margin-bottom: 15px;
+            padding-left: 5px;
+            font-size: 0.95rem;
         }
 
         .offer-box li {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 500;
             display: flex;
-            gap: 10px;
+            gap: 8px;
+            align-items: center;
         }
         
-        .offer-box i { color: #009245; margin-top: 4px; }
+        .offer-box i { color: #009245; font-size: 1rem; }
 
         .price-container {
             border-top: 1px solid #eee;
-            padding-top: 15px;
+            padding-top: 10px;
         }
 
+        /* AJUSTE 4: HIERARQUIA VISUAL DE PREÇO */
         .old-price {
-            font-size: 1rem;
-            color: #888;
+            font-size: 0.9rem; /* Menor */
+            color: #999;
             text-decoration: line-through;
+            display: block;
+            margin-bottom: -5px;
         }
 
         .new-price {
-            font-size: 3rem;
+            font-size: 3.5rem; /* BEM MAIOR */
             color: #009245;
             font-weight: 800;
             font-family: 'Oswald', sans-serif;
-            line-height: 1;
+            line-height: 1.1;
         }
 
         .payment-info {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #555;
             font-weight: bold;
         }
 
+        /* AJUSTE 5: ESCASSEZ REAL */
         .warning-text {
             color: #dc3545;
             font-size: 0.85rem;
@@ -129,11 +143,11 @@
             width: 100%;
             background: linear-gradient(180deg, #009245 0%, #006b28 100%);
             color: #fff;
-            padding: 20px;
+            padding: 18px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 800;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             text-transform: uppercase;
             font-family: 'Oswald', sans-serif;
             border-bottom: 5px solid #004d1a;
@@ -145,7 +159,7 @@
         .btn-desconto:active { transform: translateY(4px); border-bottom: 0; }
 
         .micro-security {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #aaa;
             display: flex;
             justify-content: center;
@@ -161,16 +175,18 @@
 <body>
 
     <div class="container">
-        <div class="alert-icon"><i class="fas fa-exclamation-circle"></i></div>
+        <div class="alert-icon"><i class="fas fa-unlock-alt"></i></div>
         
         <h1>ANTES DE SAIR, CONSEGUIMOS LIBERAR UM DESCONTO MAIOR PRA VOCÊ.</h1>
         
         <p class="subheadline">
-            O Documentário Premium estava por R$ 22,00. <br>
-            <strong>Antes de você sair, conseguimos reduzir ainda mais para apenas R$ 12,00.</strong>
+            Você estava prestes a pagar R$ 22,00 pelo Documentário Premium. <br>
+            <strong>Antes de sair, liberamos o acesso por apenas R$ 12,00.</strong>
         </p>
 
         <div class="offer-box">
+            <img src="images/Documentário 2.png" alt="Capa Premium" class="product-img">
+
             <ul>
                 <li><i class="fas fa-check-circle"></i> Todos os módulos (1 ao 5)</li>
                 <li><i class="fas fa-check-circle"></i> A prisão explicada passo a passo</li>
@@ -181,7 +197,7 @@
                 <span class="old-price">De R$ 22,00</span>
                 <div class="new-price">R$ 12,00</div>
                 <p class="payment-info">À vista no PIX</p>
-                <p class="warning-text">⚠️ Desconto liberado apenas nesta página.</p>
+                <p class="warning-text">⚠️ Desconto liberado apenas agora, antes de você sair.</p>
             </div>
         </div>
 
@@ -200,5 +216,5 @@
 
     <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" async defer></script>
 </body>
-  </html>
+</html>
 
