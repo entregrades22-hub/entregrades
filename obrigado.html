@@ -23,7 +23,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: 'Roboto', sans-serif; 
-            background-color: #f4f6f8; 
+            background-color: #f4f6f8; /* Cinza bem claro, descansa a vista */
             color: #333; 
             text-align: center; 
             line-height: 1.6;
@@ -36,10 +36,15 @@
             padding: 30px 20px;
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            border-top: 5px solid #009245; 
+            border-top: 5px solid #009245; /* Verde Sucesso */
         }
 
-        .success-icon { font-size: 4rem; color: #009245; margin-bottom: 20px; }
+        /* ÍCONE DE SUCESSO */
+        .success-icon {
+            font-size: 4rem;
+            color: #009245;
+            margin-bottom: 20px;
+        }
 
         h1 {
             font-family: 'Oswald', sans-serif;
@@ -50,20 +55,25 @@
             line-height: 1.2;
         }
 
-        .subtitle { font-size: 1.1rem; color: #555; margin-bottom: 30px; }
+        .subtitle {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
 
+        /* --- VÍDEO VERTICAL (MOLDURA) --- */
         .video-label {
             font-weight: 700;
-            color: #d32f2f;
+            color: #d32f2f; /* Vermelho para chamar atenção */
             margin-bottom: 10px;
             font-size: 1.1rem;
             text-transform: uppercase;
+            animation: pulse 2s infinite;
         }
 
-        /* --- VÍDEO COM CAPA INTERATIVA --- */
         .video-container {
             width: 100%;
-            max-width: 300px;
+            max-width: 300px; /* Largura de um celular */
             aspect-ratio: 9 / 16;
             margin: 0 auto 30px auto;
             background: #000;
@@ -71,48 +81,13 @@
             overflow: hidden;
             border: 4px solid #333;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            position: relative; /* Importante para o botão ficar em cima */
-            cursor: pointer;
+            position: relative;
         }
 
         .video-container video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
-        }
-
-        /* A CAPA QUE FICA EM CIMA DO VÍDEO */
-        .video-overlay {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.4); /* Escurece o vídeo */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-            transition: opacity 0.3s;
-        }
-
-        .play-btn-big {
-            font-size: 4rem;
-            color: #fff;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
-            margin-bottom: 15px;
-            animation: pulse-btn 2s infinite;
-        }
-
-        .play-text {
-            background: #d32f2f;
-            color: #fff;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
         /* --- PASSO A PASSO --- */
@@ -125,20 +100,34 @@
             margin-bottom: 30px;
         }
 
-        .step { display: flex; gap: 15px; margin-bottom: 15px; align-items: flex-start; }
-        
+        .step {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+
         .step-number {
             background: #003079;
             color: #fff;
-            width: 30px; height: 30px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            font-weight: bold; flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            flex-shrink: 0;
         }
 
-        .step-text { font-size: 1rem; color: #333; }
+        .step-text {
+            font-size: 1rem;
+            color: #333;
+        }
+
         .step-text strong { color: #003079; }
 
+        /* --- AVISO DE E-MAIL --- */
         .warning-box {
             background: #fff3cd;
             border: 1px solid #ffeeba;
@@ -147,29 +136,47 @@
             border-radius: 8px;
             font-size: 0.95rem;
             margin-bottom: 30px;
-            display: flex; align-items: center; gap: 10px; text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: left;
         }
         .warning-box i { font-size: 1.5rem; }
 
-        .btn-whatsapp {
+        /* --- BOTÃO DE SUPORTE (EMAIL) --- */
+        .btn-email {
             display: inline-block;
-            background-color: #25d366;
+            background-color: #003079; /* AZUL DE SUPORTE */
             color: white;
             padding: 15px 30px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             font-size: 1.1rem;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 48, 121, 0.3);
             transition: transform 0.2s;
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            max-width: 350px; margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            max-width: 350px;
+            margin: 0 auto;
         }
-        .btn-whatsapp:hover { transform: translateY(-3px); background-color: #1ebc57; }
+        .btn-email:hover { transform: translateY(-3px); background-color: #002255; }
+        
+        .email-display {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #666;
+        }
 
-        footer { margin-top: 40px; font-size: 0.8rem; color: #888; }
+        footer {
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: #888;
+        }
 
-        @keyframes pulse-btn { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
         
         @media (max-width: 480px) {
             h1 { font-size: 1.6rem; }
@@ -187,32 +194,28 @@
 
         <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
 
-        <p class="video-label">👇 ASSISTA: COMO ENTRAR AGORA</p>
+        <p class="video-label">👇 ASSISTA: COMO ENTRAR AGORA (1 min)</p>
 
-        <div class="video-container" id="videoWrapper">
-            
-            <video id="tutorialVideo" playsinline poster="images/capa-obrigado.jpg">
+        <div class="video-container">
+            <video controls playsinline poster="images/capa-obrigado.jpg">
                 <source src="images/video-obrigado.mp4" type="video/mp4">
                 Seu navegador não suporta vídeos.
             </video>
-
-            <div class="video-overlay" id="playOverlay">
-                <i class="fas fa-play-circle play-btn-big"></i>
-                <div class="play-text">CLIQUE PARA VER COMO ACESSAR</div>
-            </div>
-
         </div>
 
         <div class="steps-box">
             <p style="font-weight: bold; margin-bottom: 15px;">O QUE FAZER AGORA:</p>
+            
             <div class="step">
                 <div class="step-number">1</div>
                 <div class="step-text">Abra o seu <strong>E-mail</strong> agora mesmo.</div>
             </div>
+            
             <div class="step">
                 <div class="step-number">2</div>
                 <div class="step-text">Procure um e-mail com o título: <strong>"Seu acesso ao Documentário"</strong> (enviado pela Kirvano).</div>
             </div>
+            
             <div class="step">
                 <div class="step-number">3</div>
                 <div class="step-text">Clique no botão verde dentro do e-mail para criar sua senha e entrar.</div>
@@ -227,31 +230,16 @@
             </div>
         </div>
 
-        <a href="https://wa.me/message/O52M473XMG4JI1" class="btn-whatsapp">
-            <i class="fab fa-whatsapp"></i> Preciso de ajuda para entrar
+        <a href="mailto:entregrades22@gmail.com?subject=Preciso de ajuda com o acesso do Documentário" class="btn-email">
+            <i class="fas fa-envelope"></i> Enviar e-mail de ajuda
         </a>
+        <p class="email-display">Ou envie para: <strong>entregrades22@gmail.com</strong></p>
 
         <footer>
             <p>Brasil Acima de Tudo © 2025</p>
         </footer>
     </div>
 
-    <script>
-        // SCRIPT PARA FAZER O BOTÃO FUNCIONAR
-        const wrapper = document.getElementById('videoWrapper');
-        const video = document.getElementById('tutorialVideo');
-        const overlay = document.getElementById('playOverlay');
-
-        // Função para dar play
-        function playVideo() {
-            video.play();
-            video.controls = true; // Mostra os controles nativos depois de dar play
-            overlay.style.display = 'none'; // Esconde a capa e o botão
-        }
-
-        // Adiciona o evento de clique na capa inteira
-        wrapper.addEventListener('click', playVideo);
-    </script>
-
 </body>
 </html>
+
