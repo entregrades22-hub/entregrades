@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra Aprovada - Acesso Liberado</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script
+        src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+        data-utmify-prevent-xcod-sck
+        data-utmify-prevent-subids
+        async
+        defer
+    ></script>
+
+    <style>
+        /* --- DESIGN LIMPO E LEGÍVEL PARA PÚBLICO MAIS VELHO --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            background-color: #f4f6f8; /* Cinza bem claro, descansa a vista */
+            color: #333; 
+            text-align: center; 
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border-top: 5px solid #009245; /* Verde Sucesso */
+        }
+
+        /* ÍCONE DE SUCESSO */
+        .success-icon {
+            font-size: 4rem;
+            color: #009245;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: #003079;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        /* --- VÍDEO VERTICAL (MOLDURA) --- */
+        .video-label {
+            font-weight: 700;
+            color: #d32f2f; /* Vermelho para chamar atenção */
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            animation: pulse 2s infinite;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 300px; /* Largura de um celular */
+            aspect-ratio: 9 / 16;
+            margin: 0 auto 30px auto;
+            background: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 4px solid #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- PASSO A PASSO --- */
+        .steps-box {
+            text-align: left;
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .step {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background: #003079;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-text {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .step-text strong { color: #003079; }
+
+        /* --- AVISO DE E-MAIL --- */
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: left;
+        }
+        .warning-box i { font-size: 1.5rem; }
+
+        /* --- BOTÃO DE SUPORTE --- */
+        .btn-whatsapp {
+            display: inline-block;
+            background-color: #25d366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+        .btn-whatsapp:hover { transform: translateY(-3px); background-color: #1ebc57; }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+        
+        @media (max-width: 480px) {
+            h1 { font-size: 1.6rem; }
+            .container { margin: 0; border-radius: 0; padding: 30px 15px; min-height: 100vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <i class="fas fa-check-circle success-icon"></i>
+
+        <h1>COMPRA APROVADA!</h1>
+        <p class="subtitle">Seu acesso ao documentário já foi liberado.</p>
+
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+        <p class="video-label">👇 ASSISTA: COMO ENTRAR AGORA (1 min)</p>
+
+        <div class="video-container">
+            <video controls playsinline poster="images/capa-obrigado.jpg">
+                <source src="images/video-obrigado.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos.
+            </video>
+        </div>
+
+        <div class="steps-box">
+            <p style="font-weight: bold; margin-bottom: 15px;">O QUE FAZER AGORA:</p>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text">Abra o seu <strong>E-mail</strong> agora mesmo.</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text">Procure um e-mail com o título: <strong>"Seu acesso ao Documentário"</strong> (enviado pela Kirvano).</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text">Clique no botão verde dentro do e-mail para criar sua senha e entrar.</div>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+                <strong>Não achou o e-mail?</strong><br>
+                Verifique sua caixa de <strong>LIXO ELETRÔNICO</strong> ou <strong>SPAM</strong>. As vezes o e-mail cai lá por engano.
+            </div>
+        </div>
+
+        <a href="https://wa.me/message/O52M473XMG4JI1" class="btn-whatsapp">
+            <i class="fab fa-whatsapp"></i> Preciso de ajuda para entrar
+        </a>
+
+        <footer>
+            <p>Brasil Acima de Tudo © 2025</p>
+        </footer>
+    </div>
+
+</body>
+</html>
+
