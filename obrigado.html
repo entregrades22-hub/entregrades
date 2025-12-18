@@ -61,7 +61,7 @@
             margin-bottom: 30px;
         }
 
-        /* --- VÍDEO VERTICAL (MOLDURA) --- */
+        /* --- VÍDEO VERTICAL COM BOTÃO GIGANTE --- */
         .video-label {
             font-weight: 700;
             color: #d32f2f; /* Vermelho para chamar atenção */
@@ -81,13 +81,47 @@
             overflow: hidden;
             border: 4px solid #333;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            position: relative;
+            position: relative; /* Importante para o botão ficar no meio */
+            cursor: pointer;
         }
 
         .video-container video {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
+        }
+
+        /* O BOTÃO GIGANTE DO MEIO */
+        .big-play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background-color: rgba(0, 146, 69, 0.9); /* Verde semi-transparente */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            padding-left: 5px; /* Ajuste ótico do ícone play */
+            z-index: 10;
+            pointer-events: none; /* Deixa o clique passar para o container */
+        }
+
+        .video-container:hover .big-play-button {
+            transform: translate(-50%, -50%) scale(1.1);
+            background-color: rgba(0, 146, 69, 1);
+        }
+
+        .big-play-button.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
 
         /* --- PASSO A PASSO --- */
@@ -194,13 +228,16 @@
 
         <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
 
-        <p class="video-label">👇 ASSISTA: COMO ENTRAR AGORA (1 min)</p>
+        <p class="video-label">👇 ASSISTA: COMO ACESSAR O SE DOCUMENTÁRIO (1 min)</p>
 
-        <div class="video-container">
-            <video controls playsinline poster="images/capa-obrigado.jpg">
+        <div class="video-container" id="video-wrapper">
+            <video id="main-video" playsinline poster="images/capa-obrigado.jpg">
                 <source src="images/video-obrigado.mp4" type="video/mp4">
                 Seu navegador não suporta vídeos.
             </video>
+            <div class="big-play-button" id="play-btn-overlay">
+                <i class="fas fa-play"></i>
+            </div>
         </div>
 
         <div class="steps-box">
@@ -213,7 +250,7 @@
             
             <div class="step">
                 <div class="step-number">2</div>
-                <div class="step-text">Procure um e-mail com o título: <strong>"Seu acesso ao Documentário"</strong> (enviado pela Kirvano).</div>
+                <div class="step-text">Procure um e-mail com o título: <strong>"KIRVANO"</strong> (enviado pela Kirvano).</div>
             </div>
             
             <div class="step">
@@ -239,6 +276,34 @@
             <p>Brasil Acima de Tudo © 2025</p>
         </footer>
     </div>
+
+    <script>
+        // Script para fazer o botão gigante funcionar
+        const videoWrapper = document.getElementById('video-wrapper');
+        const video = document.getElementById('main-video');
+        const playBtnOverlay = document.getElementById('play-btn-overlay');
+
+        function togglePlay() {
+            if (video.paused || video.ended) {
+                video.play();
+                playBtnOverlay.classList.add('hidden');
+                video.controls = true; // Mostra os controles nativos após o play
+            } else {
+                video.pause();
+                playBtnOverlay.classList.remove('hidden');
+                video.controls = false; // Esconde controles se pausar
+            }
+        }
+
+        // Se clicar no container (vídeo ou botão), dá play/pause
+        videoWrapper.addEventListener('click', togglePlay);
+
+        // Se o vídeo acabar, mostra o botão grande de novo
+        video.addEventListener('ended', () => {
+            playBtnOverlay.classList.remove('hidden');
+            video.controls = false;
+        });
+    </script>
 
 </body>
 </html>
