@@ -19,11 +19,10 @@
     ></script>
 
     <style>
-        /* --- DESIGN LIMPO E LEGÍVEL PARA PÚBLICO MAIS VELHO --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: 'Roboto', sans-serif; 
-            background-color: #f4f6f8; /* Cinza bem claro, descansa a vista */
+            background-color: #f4f6f8; 
             color: #333; 
             text-align: center; 
             line-height: 1.6;
@@ -36,10 +35,9 @@
             padding: 30px 20px;
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            border-top: 5px solid #009245; /* Verde Sucesso */
+            border-top: 5px solid #009245; 
         }
 
-        /* ÍCONE DE SUCESSO */
         .success-icon {
             font-size: 4rem;
             color: #009245;
@@ -61,19 +59,18 @@
             margin-bottom: 30px;
         }
 
-        /* --- VÍDEO VERTICAL COM BOTÃO GIGANTE --- */
+        /* --- VÍDEO VERTICAL --- */
         .video-label {
             font-weight: 700;
-            color: #d32f2f; /* Vermelho para chamar atenção */
+            color: #d32f2f;
             margin-bottom: 10px;
             font-size: 1.1rem;
             text-transform: uppercase;
-            animation: pulse 2s infinite;
         }
 
         .video-container {
             width: 100%;
-            max-width: 300px; /* Largura de um celular */
+            max-width: 300px;
             aspect-ratio: 9 / 16;
             margin: 0 auto 30px auto;
             background: #000;
@@ -81,7 +78,7 @@
             overflow: hidden;
             border: 4px solid #333;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            position: relative; /* Importante para o botão ficar no meio */
+            position: relative;
             cursor: pointer;
         }
 
@@ -92,36 +89,37 @@
             display: block;
         }
 
-        /* O BOTÃO GIGANTE DO MEIO */
-        .big-play-button {
+        /* --- O BOTÃO DO VÍDEO (CAPA DE CLIQUE) --- */
+        .video-overlay-btn {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
-            background-color: rgba(0, 146, 69, 0.9); /* Verde semi-transparente */
-            border-radius: 50%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4); /* Escurece um pouco o fundo */
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
-            font-size: 2.5rem;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-            transition: all 0.3s ease;
-            padding-left: 5px; /* Ajuste ótico do ícone play */
             z-index: 10;
-            pointer-events: none; /* Deixa o clique passar para o container */
+            transition: all 0.3s;
         }
 
-        .video-container:hover .big-play-button {
-            transform: translate(-50%, -50%) scale(1.1);
-            background-color: rgba(0, 146, 69, 1);
+        .cta-play {
+            background: #009245; /* Verde botão */
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 0 20px rgba(0, 146, 69, 0.6);
+            animation: pulse-green 1.5s infinite;
+            border: 2px solid #fff;
         }
 
-        .big-play-button.hidden {
-            opacity: 0;
-            pointer-events: none;
+        .video-overlay-btn.hidden {
+            display: none;
         }
 
         /* --- PASSO A PASSO --- */
@@ -159,7 +157,7 @@
             color: #333;
         }
 
-        .step-text strong { color: #003079; }
+        .step-text strong { color: #003079; font-weight: 800; }
 
         /* --- AVISO DE E-MAIL --- */
         .warning-box {
@@ -177,10 +175,10 @@
         }
         .warning-box i { font-size: 1.5rem; }
 
-        /* --- BOTÃO DE SUPORTE (EMAIL) --- */
+        /* --- BOTÃO EMAIL --- */
         .btn-email {
             display: inline-block;
-            background-color: #003079; /* AZUL DE SUPORTE */
+            background-color: #003079;
             color: white;
             padding: 15px 30px;
             border-radius: 50px;
@@ -204,13 +202,13 @@
             color: #666;
         }
 
-        footer {
-            margin-top: 40px;
-            font-size: 0.8rem;
-            color: #888;
-        }
+        footer { margin-top: 40px; font-size: 0.8rem; color: #888; }
 
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+        @keyframes pulse-green { 
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 146, 69, 0.7); } 
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(0, 146, 69, 0); } 
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 146, 69, 0); } 
+        }
         
         @media (max-width: 480px) {
             h1 { font-size: 1.6rem; }
@@ -228,15 +226,18 @@
 
         <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
 
-        <p class="video-label">👇 ASSISTA: COMO ACESSAR O SE DOCUMENTÁRIO (1 min)</p>
+        <p class="video-label">👇 VEJA COMO ENTRAR AGORA (1 min)</p>
 
         <div class="video-container" id="video-wrapper">
             <video id="main-video" playsinline poster="images/capa-obrigado.jpg">
                 <source src="images/video-obrigado.mp4" type="video/mp4">
                 Seu navegador não suporta vídeos.
             </video>
-            <div class="big-play-button" id="play-btn-overlay">
-                <i class="fas fa-play"></i>
+            
+            <div class="video-overlay-btn" id="play-btn-overlay">
+                <div class="cta-play">
+                    <i class="fas fa-play"></i> CLIQUE PARA ASSISTIR
+                </div>
             </div>
         </div>
 
@@ -250,7 +251,7 @@
             
             <div class="step">
                 <div class="step-number">2</div>
-                <div class="step-text">Procure um e-mail com o título: <strong>"KIRVANO"</strong> (enviado pela Kirvano).</div>
+                <div class="step-text">Procure pelo remetente: <strong>KIRVANO</strong>.</div>
             </div>
             
             <div class="step">
@@ -278,7 +279,7 @@
     </div>
 
     <script>
-        // Script para fazer o botão gigante funcionar
+        // SCRIPT PARA RODAR O VÍDEO AO CLICAR NO BOTÃO
         const videoWrapper = document.getElementById('video-wrapper');
         const video = document.getElementById('main-video');
         const playBtnOverlay = document.getElementById('play-btn-overlay');
@@ -286,23 +287,13 @@
         function togglePlay() {
             if (video.paused || video.ended) {
                 video.play();
-                playBtnOverlay.classList.add('hidden');
-                video.controls = true; // Mostra os controles nativos após o play
-            } else {
-                video.pause();
-                playBtnOverlay.classList.remove('hidden');
-                video.controls = false; // Esconde controles se pausar
+                playBtnOverlay.classList.add('hidden'); // Some com o botão
+                video.controls = true; // Mostra controles normais
             }
         }
 
-        // Se clicar no container (vídeo ou botão), dá play/pause
+        // Clicar no botão ou no vídeo dá play
         videoWrapper.addEventListener('click', togglePlay);
-
-        // Se o vídeo acabar, mostra o botão grande de novo
-        video.addEventListener('ended', () => {
-            playBtnOverlay.classList.remove('hidden');
-            video.controls = false;
-        });
     </script>
 
 </body>
