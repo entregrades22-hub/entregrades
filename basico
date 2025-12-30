@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta Especial - Áudio Premium</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script
+        src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+        data-utmify-prevent-xcod-sck
+        data-utmify-prevent-subids
+        async
+        defer
+    ></script>
+
+    <style>
+        /* --- ESTILO UPSELL (DARK MODE) --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            background-color: #050a10; /* Preto azulado profundo */
+            color: #fff; 
+            text-align: center; 
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- CABEÇALHO DE ALERTA --- */
+        .alert-box {
+            background: #d32f2f;
+            color: #fff;
+            padding: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 20px rgba(211, 47, 47, 0.4);
+            animation: pulse-red 2s infinite;
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.2rem;
+            line-height: 1.2;
+            color: #FFD700; /* Dourado */
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .subheadline {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            margin-bottom: 40px;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- BLOC PRINCIPAL (IMAGEM + TEXTO) --- */
+        .offer-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+            background: #121a24;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            margin-bottom: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .offer-grid {
+                flex-direction: row;
+                text-align: left;
+                align-items: start;
+            }
+            .offer-content { flex: 1; }
+        }
+
+        /* Imagem Vertical 9:16 Ajustada */
+        .product-img {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 2px solid #FFD700;
+        }
+
+        .offer-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .offer-text {
+            color: #ccc;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        /* --- BULLETS --- */
+        .bullets-list {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .bullets-list li {
+            margin-bottom: 12px;
+            display: flex;
+            gap: 10px;
+            font-size: 1rem;
+            color: #fff;
+        }
+        .bullets-list i { color: #009245; margin-top: 4px; }
+
+        /* --- PREÇO --- */
+        .price-box {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid #FFD700;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .old-price { text-decoration: line-through; color: #888; font-size: 1rem; }
+        .new-price { font-size: 2.5rem; color: #FFD700; font-family: 'Oswald', sans-serif; font-weight: 700; line-height: 1.1; }
+        .price-text { font-size: 0.9rem; color: #ccc; margin-top: 5px; }
+
+        /* --- BOTÃO --- */
+        .btn-upsell {
+            display: block;
+            width: 100%;
+            background: linear-gradient(180deg, #009245 0%, #006b28 100%);
+            color: #fff;
+            padding: 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            font-family: 'Oswald', sans-serif;
+            border-bottom: 5px solid #004d1a;
+            box-shadow: 0 5px 25px rgba(0, 146, 69, 0.4);
+            animation: pulse-green 2s infinite;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        .btn-upsell:hover { filter: brightness(1.1); transform: translateY(-2px); }
+        .btn-upsell:active { transform: translateY(4px); border-bottom: 0; }
+
+        .micro-guarantee {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        /* --- LINK DE RECUSA --- */
+        .refusal-link {
+            display: inline-block;
+            color: #666;
+            text-decoration: underline;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .refusal-link:hover { color: #fff; }
+
+        @keyframes pulse-red { 0% { opacity: 1; } 50% { opacity: 0.8; } 100% { opacity: 1; } }
+        @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(0, 146, 69, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 146, 69, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 146, 69, 0); } }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="alert-box">
+            🛑 Espere. Sua compra foi confirmada.
+        </div>
+
+        <h1>AGORA ESCUTE TUDO O QUE VOCÊ ACABOU DE LER — EXPLICADO PASSO A PASSO.</h1>
+
+        <p class="subheadline">
+            Nem todo mundo tem tempo, paciência ou facilidade pra ler tudo. <br>
+            Por isso criamos os <strong>Áudios Explicativos dos Módulos</strong> — para você entender tudo com clareza, ouvindo no seu ritmo.
+        </p>
+
+        <div class="offer-grid">
+            <div>
+                <img src="images/imagemaudio.png" alt="Documentário em Áudio" class="product-img">
+            </div>
+
+            <div class="offer-content">
+                <div class="offer-title">
+                    <i class="fas fa-headphones-alt" style="color: #FFD700;"></i> O QUE VOCÊ VAI RECEBER:
+                </div>
+                
+                <p class="offer-text">
+                    Você terá acesso aos áudios explicativos dos módulos, narrados de forma clara, calma e didática — como se alguém experiente estivesse te explicando tudo no ouvido.
+                    <br><br>
+                    <strong>Ideal para ouvir no carro, em casa ou caminhando.</strong>
+                </p>
+
+                <ul class="bullets-list">
+                    <li><i class="fas fa-check-circle"></i> Explicação em áudio dos módulos 1 e 2</li>
+                    <li><i class="fas fa-check-circle"></i> Linguagem simples, direta e sem juridiquês</li>
+                    <li><i class="fas fa-check-circle"></i> Ideal para quem não gosta de ler textos longos</li>
+                    <li><i class="fas fa-check-circle"></i> Ajuda a fixar o conteúdo e entender melhor</li>
+                    <li><i class="fas fa-check-circle"></i> Acesso imediato após a confirmação</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="price-box">
+            <p>Esse conteúdo poderia facilmente ser vendido como um curso em áudio.</p>
+            <span class="old-price">De R$ 39,90</span>
+            <div class="new-price">POR APENAS R$ 19,90</div>
+            <p class="price-text">Pagamento único. Acesso imediato.</p>
+
+            <a href="https://pay.kirvano.com/2a7b7f8f-44e9-443b-b019-9aa0de6f881c" class="btn-upsell">
+                SIM, QUERO O DOCUMENTÁRIO EM ÁUDIO
+            </a>
+            
+            <p class="micro-guarantee">🔒 Compra segura • Você recebe tudo imediatamente</p>
+        </div>
+
+        <p style="color: #888; font-size: 1rem; margin-top: 30px;">
+            "Se você já decidiu conhecer os fatos, agora pode entender tudo com mais facilidade, sem esforço. É ouvir, absorver e seguir em frente."
+        </p>
+
+        <a href="obrigado.html" class="refusal-link">
+            Não, obrigado. Vou ficar apenas com o material escrito.
+        </a>
+
+    </div>
+
+    <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" async defer></script>
+</body>
+</html>
+
